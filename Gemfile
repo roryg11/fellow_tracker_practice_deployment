@@ -32,6 +32,11 @@ gem 'spring',        group: :development
 
 gem 'devise'
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
