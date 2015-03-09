@@ -1,7 +1,7 @@
 <h1>Add New User</h1>
 
 <div class="container">
-  <%= form_for @user, url: '/admin/users' do |f| %>
+  <%= form_for @user, url: admin_users_path do |f| %>
 
   <%= f.label :first_name %>
   <%= f.text_field :first_name %>
