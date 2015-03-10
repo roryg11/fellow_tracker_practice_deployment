@@ -1,0 +1,19 @@
+<h1>Add New Cohort</h1>
+
+<div class="container">
+  <%= form_for @cohort, url: cohorts_path do |f| %>
+
+  <%= f.label :start_date %>
+  <%= f.date_field :start_date %>
+
+  <%= f.label :season %>
+  <%= f.text_field :season %>
+
+  <%= f.label :year %>
+  <%= f.text_field :year %>
+
+  <%= f.submit "Create New Cohort" %>
+
+  <%end%>
+
+</div>
