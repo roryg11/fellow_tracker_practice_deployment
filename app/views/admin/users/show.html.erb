@@ -12,7 +12,10 @@
   Email: <%= @user.email %>
 </p>
 
+<%= link_to "New Goal", new_admin_user_goal_path(current_user) %>
 
-<p>
-  <h2>Put Todo List here for the Fellow</h2>
-</p>
+<ul>
+  <% @goals.each do |goal| %>
+    <li><%= goal.description %> --- <%= goal.completed %> --- <%= goal.due_date %></li>
+  <% end %>
+</ul>
