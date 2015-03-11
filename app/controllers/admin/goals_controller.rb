@@ -16,10 +16,26 @@ class Admin::GoalsController < ApplicationController
     end
   end
 
+  def edit
+    @goal = @user.goals.find(params[:id])
+  end
 
+  def update
+    @goal = @user.goals.find(params[:id])
+    @goal.update(goal_params)
+    if @goal.save
+      redirect_to admin_user_path(@user)
+    else
+      render :edit
+    end
+  end
 
-
-
+  def destroy
+    @goal = @user.goals.find(params[:id])
+    @goal.destroy
+    redirect_to admin_user_path(@user)
+    flash[:alert] = "Goal has been deleted."
+  end
 
   private
 
@@ -28,5 +44,5 @@ class Admin::GoalsController < ApplicationController
     :description, :due_date, :completed, :user_id,
     )
   end
-  
+
 end
