@@ -5,6 +5,7 @@ class Admin::UsersController < ApplicationController
 
   def new
     @user = User.new
+    @cohorts = Cohort.all
   end
 
   def create
@@ -24,6 +25,6 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email)
+    params.require(:user).permit(:first_name, :last_name, :email, :cohort_id)
   end
 end

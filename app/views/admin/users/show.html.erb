@@ -11,7 +11,9 @@
 <p>
   Email: <%= @user.email %>
 </p>
-
+<p>
+Cohort: <%= @user.cohort.season %> <%= @user.cohort.year %>
+</p>
 <%= link_to "New Goal", new_admin_user_goal_path(current_user) %>
 
 <ul>

@@ -11,13 +11,10 @@
 <p>
   Start Date: <%= @cohort.start_date %>
 </p>
-<p>
-   <% @cohort.users.each do |user| %>
+  <h2>Put Users here for Admin</h2>
+  <% @cohort.users.each do |user| %>
     <li>First name: <%= user.first_name %></li>
     <li>Last name: <%= user.last_name %></li>
     <li>Email: <%= user.email %></li>
     <% end %>
-</p>
-<p>
-  <h2>Put Users here for Admin</h2>
 </p>

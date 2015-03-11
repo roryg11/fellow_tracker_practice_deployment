@@ -12,7 +12,9 @@
   <%= f.label :email %>
   <%= f.email_field :email %>
 
-  <%= f.submit "Create New Fellow", id:"submit-user-button" %>
+   <%= f.label :cohort_id %>
+   <%=f.collection_select(:cohort_id, Cohort.all, :id, :year, {}) %>
+   <%= f.submit "Create New Fellow", id:"submit-user-button" %>
 
   <%end%>
 

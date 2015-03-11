@@ -1,3 +1,8 @@
 class Cohort < ActiveRecord::Base
     has_many :users
-end 
+    def name
+      @cohorts.each do |cohort|
+    "#{cohort.season} #{cohort.year}"
+      end
+    end
+end
