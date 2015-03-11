@@ -16,6 +16,12 @@ ActiveRecord::Schema.define(version: 20150310222440) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "cohorts", force: true do |t|
+    t.string "season"
+    t.string "year"
+    t.date   "start_date"
+  end
+
   create_table "goals", force: true do |t|
     t.string   "description"
     t.date     "due_date"
@@ -23,12 +29,6 @@ ActiveRecord::Schema.define(version: 20150310222440) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "cohorts", force: true do |t|
-    t.string "season"
-    t.string "year"
-    t.date   "start_date"
   end
 
   create_table "users", force: true do |t|
