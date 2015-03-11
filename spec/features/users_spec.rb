@@ -26,6 +26,25 @@ feature "Users" do
     expect(page).to have_content("Loh")
     expect(page).to have_content("tinalola@gmail.com")
 
+  scenario 'Fellow can not see another fellows goals' do
+    other_user = User.create!(
+      email: 'other-user@example.com',
+      password: 'abcd1234',
+      password_confirmation: 'abcd1234'
+    )
+    other_user.goals.create!(description: 'other persons goal')
 
+    User.create!(
+      email: 'user@example.com',
+      password: 'abcd1234',
+      password_confirmation: 'abcd1234'
+    )
+
+    visit root_path
+    fill_in "Email", with: 'user@example.com'
+    fill_in "Password", with: "abcd1234"
+    click_on "Log in"
+
+    expect(page).to_not have_content('other persons goal')
   end
 end
