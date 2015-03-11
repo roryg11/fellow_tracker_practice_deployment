@@ -16,8 +16,35 @@ Cohort: <%= @user.cohort.season %> <%= @user.cohort.year %>
 </p>
 <%= link_to "New Goal", new_admin_user_goal_path(current_user) %>
 
-<ul>
-  <% @goals.each do |goal| %>
-    <li><%= goal.description %> --- <%= goal.completed %> --- <%= goal.due_date %> <%= link_to "Edit goal", edit_admin_user_goal_path(@user, goal) %> <%= link_to "Delete goal", admin_user_goal_path(@user,goal), method: :delete, data: {confirm: "Are you sure?"} %></li>
-  <% end %>
-</ul>
+<div class="container-fluid">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Due Date</th>
+        <th>Completed?</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @goals.each do |goal| %>
+        <tr>
+          <td><%= goal.description %></td>
+          <td><%= goal.due_date %></td>
+          <td>
+            <% if goal.completed == false  %>
+              <%= link_to "Complete", admin_user_goal_path(@user, goal, "goal[completed]" => true), method: :put %>
+            <% else %>
+              Done
+            <% end %>
+          </td>
+          <td><%= link_to "Edit goal", edit_admin_user_goal_path(@user, goal) %></td>
+          <td><%= link_to "Delete goal", admin_user_goal_path(@user,goal), method: :delete, data: {confirm: "Are you sure?"} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
