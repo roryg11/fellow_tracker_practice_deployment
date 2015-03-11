@@ -16,6 +16,19 @@ class Admin::GoalsController < ApplicationController
     end
   end
 
+  def edit
+    @goal = @user.goals.find(params[:id])
+  end
+
+  def update
+    @goal = @user.goals.find(params[:id])
+    @goal.update(goal_params)
+    if @goal.save
+      redirect_to admin_user_path(@user)
+    else
+      render :edit
+    end
+  end
 
 
 
@@ -28,5 +41,5 @@ class Admin::GoalsController < ApplicationController
     :description, :due_date, :completed, :user_id,
     )
   end
-  
+
 end

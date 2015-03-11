@@ -16,6 +16,6 @@
 
 <ul>
   <% @goals.each do |goal| %>
-    <li><%= goal.description %> --- <%= goal.completed %> --- <%= goal.due_date %></li>
+    <li><%= goal.description %> --- <%= goal.completed %> --- <%= goal.due_date %> <%= link_to "Edit goal", edit_admin_user_goal_path(@user, goal) %></li>
   <% end %>
 </ul>
