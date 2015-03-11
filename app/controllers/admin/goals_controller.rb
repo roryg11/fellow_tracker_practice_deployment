@@ -30,9 +30,12 @@ class Admin::GoalsController < ApplicationController
     end
   end
 
-
-
-
+  def destroy
+    @goal = @user.goals.find(params[:id])
+    @goal.destroy
+    redirect_to admin_user_path(@user)
+    flash[:alert] = "Goal has been deleted."
+  end
 
   private
 
