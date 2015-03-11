@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature "Users" do
-
   scenario "Super User can create a fellow" do
     User.create!(
       first_name: "Rory",
@@ -25,6 +24,28 @@ feature "Users" do
     expect(page).to have_content("Tina")
     expect(page).to have_content("Loh")
     expect(page).to have_content("tinalola@gmail.com")
+  end
+
+  scenario 'Fellow can add a goal' do
+    User.create!(
+      email: 'user@example.com',
+      password: 'abcd1234',
+      password_confirmation: 'abcd1234'
+    )
+
+    visit root_path
+    fill_in "Email", with: 'user@example.com'
+    fill_in "Password", with: "abcd1234"
+    click_on "Log in"
+
+    click_on '#new-goal-action'
+    fill_in '#goal_description', with: 'goal description'
+    fill_in '#goal_due_date', with: '2015-03-25'
+    click_on '#save-goal-action'
+
+    expect(page).to have_content('goal description')
+    expect(page).to have_content('2015-03-25')
+  end
 
   scenario 'Fellow can not see another fellows goals' do
     other_user = User.create!(
