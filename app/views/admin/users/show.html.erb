@@ -16,7 +16,7 @@
 Cohort: <%= @user.cohort.season %> <%= @user.cohort.year %> 
 <%end%>
 </p>
-<%= link_to "New Goal", new_admin_user_goal_path(current_user) %>
+<%= link_to "New Goal", new_admin_user_goal_path(current_user), id: 'new-goal-action' %>
 
 <div class="container-fluid">
   <table class="table">

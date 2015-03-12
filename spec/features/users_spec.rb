@@ -10,15 +10,21 @@ feature "Users" do
       admin: true
     )
 
+    Cohort.create!(
+      season: "Fall",
+      year: "2015",
+      )
+
     visit root_path
     fill_in "Email", with: "rory.c.grant@gmail.com"
     fill_in "Password", with: "roryrocks"
     click_on "Log in"
-    click_on "new-user-button"
-    save_and_open_page
+    visit root_path
+    click_on 'new-user-button'
     fill_in "First name", with: "Tina"
     fill_in "Last name", with: "Loh"
     fill_in "Email", with: "tinalola@gmail.com"
+    select "2015", :from => "user_cohort_id"
     click_on "submit-user-button"
 
     expect(page).to have_content("Tina")
@@ -38,10 +44,10 @@ feature "Users" do
     fill_in "Password", with: "abcd1234"
     click_on "Log in"
 
-    click_on '#new-goal-action'
-    fill_in '#goal_description', with: 'goal description'
-    fill_in '#goal_due_date', with: '2015-03-25'
-    click_on '#save-goal-action'
+    click_on 'new-goal-action'
+    fill_in 'goal_description', with: 'goal description'
+    fill_in 'goal_due_date', with: '2015-03-25'
+    click_on 'save-goal-action'
 
     expect(page).to have_content('goal description')
     expect(page).to have_content('2015-03-25')
