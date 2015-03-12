@@ -19,7 +19,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @goals = Goal.all
+    @goals = @user.goals
   end
 
   private
