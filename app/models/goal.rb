@@ -1,5 +1,5 @@
 class Goal < ActiveRecord::Base
-  validates :due_date, presence: true
+  validates :due_date, :description, presence: true
   validate :due_date_cannot_be_in_the_past
   belongs_to :user
 
