@@ -3,6 +3,8 @@
 <div class="container">
   <%= form_for @cohort, url: cohorts_path do |f| %>
 
+  <%= render 'shared/errors', object: @cohort %>
+
   <%= f.label :start_date %>
   <%= f.date_field :start_date %>
 
