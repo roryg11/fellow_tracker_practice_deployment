@@ -12,7 +12,7 @@ class CohortsController < ApplicationController
     if @cohort.save
       redirect_to cohorts_path, notice: "Cohort successfully saved."
     else
-      render :new, alert: "Fellow could not be saved."
+      render :new, alert: "Cohort could not be saved."
     end
   end
 
@@ -34,7 +34,6 @@ class CohortsController < ApplicationController
 
   def show
     @cohort = Cohort.find(params[:id])
-    @user = User.find(params[:id])
   end
 
   private
