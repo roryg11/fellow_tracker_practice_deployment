@@ -5,7 +5,7 @@ class Admin::UsersController < ApplicationController
 
   def new
     @user = User.new
-    @cohorts = Cohort.all
+    @users = User.all
   end
 
   def create
@@ -17,6 +17,22 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    if @user.save
+      redirect_to admin_user_path
+      flash[:notice] = "User successfully updated."
+    else
+      render :edit
+      flash[:notice] = "User could not be updated."
+    end
+  end
+
   def show
     @user = User.find(params[:id])
     @goals = @user.goals
@@ -25,6 +41,6 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :cohort_id)
+    params.require(:user).permit(:first_name, :last_name, :email, :user_id, :cohort_id)
   end
 end

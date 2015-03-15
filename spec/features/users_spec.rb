@@ -60,7 +60,7 @@ feature "Users" do
       password: 'abcd1234',
       password_confirmation: 'abcd1234'
     )
-    other_user.goals.create!(description: 'other persons goal')
+    other_user.goals.create!(description: 'other persons goal', due_date: '2015-03-29')
 
     User.create!(
       email: 'user@example.com',
