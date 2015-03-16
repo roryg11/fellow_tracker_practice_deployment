@@ -3,6 +3,13 @@ class Admin::GoalsController < ApplicationController
     @user = current_user
   end
 
+  def index
+    @goals = @user.goals
+    @cohort_start_date = @user.cohort.start_date
+    @week_number = 1
+    @first_monday = @user.cohort.first_monday
+  end
+
   def new
     @goal = @user.goals.new
   end
