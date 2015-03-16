@@ -1,32 +1,25 @@
 <h1>Goal History</h1>
 
-<%= @user.cohort.first_monday %>
-<%= @cohort_start_date %>
-
 <div class="container">
-  <% 52.times do |week| %>
+  <% @cohort_phase_array.each do |week|  %>
     <table class="table">
+      <h4> Week <%= week[:week_number] %> <%= week[:start] %></h4>
       <thead>
-        <h3>Week <%= @week_number %> <%= (@first_monday + (7*(@week_number -1))).strftime("%B %d %Y") %> --- <%= (@first_monday + (7*(@week_number -1)) + 6).strftime("%B %d %Y") %></h3>
         <tr>
           <th>Goal Description</th>
           <th>Goal Due Date</th>
-          <th>Goal Completed</th>
+          <th>Completed?</th>
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <% week[:goals].each do |goal| %>
+            <td><%= goal.description %>
+            <td><%= goal.due_date %></td>
+            <td><%= goal.completed %></td>
+          <% end %>
+        </tr>
       </tbody>
     </table>
-    <% @week_number+=1 %>
   <% end  %>
 </div>
-
-<!-- 52.times do
- week_number = i
- p week_number
- week_start_date = first_monday + (7 * (i-1))
- p week_start_date
- week_end_date = week_start_date + 6
- p week_end_date
- i+=1
-end -->
