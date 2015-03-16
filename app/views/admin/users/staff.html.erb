@@ -1,0 +1,8 @@
+<h1>STAFF</h1>
+
+
+<% @users.each do |staff_member|  %>
+  <%= staff_member.first_name %>
+  <%= staff_member.last_name %>
+  <%= staff_member.email %>
+<% end %>

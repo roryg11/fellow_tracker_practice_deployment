@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.where("admin = false")
   end
 
   def new
@@ -36,6 +36,10 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @goals = @user.goals
+  end
+
+  def staff
+    @users = User.where("admin = true")
   end
 
   private
