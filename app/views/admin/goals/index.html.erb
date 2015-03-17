@@ -12,13 +12,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <% week[:goals].each do |goal| %>
+        <% week[:goals].each do |goal| %>
+          <tr>
             <td><%= goal.description %>
             <td><%= goal.due_date %></td>
             <td><%= goal.completed %></td>
-          <% end %>
-        </tr>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   <% end  %>
