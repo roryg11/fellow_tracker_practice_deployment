@@ -1,7 +1,8 @@
 class Cohort < ActiveRecord::Base
     validates :season, :year, :start_date, presence: true
     validate :start_date_is_a_monday
-    has_many :users
+    has_many :users, through: :memberships
+    has_many :memberships
     def full_name
         "#{season} #{year}"
     end
