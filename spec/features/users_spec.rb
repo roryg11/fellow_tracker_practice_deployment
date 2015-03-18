@@ -13,7 +13,7 @@ feature "Users" do
     Cohort.create!(
       season: "Fall",
       year: "2015",
-      start_date: Date.today
+      start_date: Date.new(2015, 04, 20)
       )
 
     visit root_path

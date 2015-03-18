@@ -9,7 +9,8 @@ class Admin::GoalsController < ApplicationController
     @week_number = 1
     @first_monday = @user.cohort.first_monday
     @cohort_phase_array = []
-    52.times do
+    weeks_since_launch = ((Date.today - @first_monday)/7).ceil.to_i
+    weeks_since_launch.times do
       week_hash = {}
       week_hash[:week_number] = @week_number
       week_hash[:start] = (@first_monday + (7*(@week_number -1))).strftime("%B %d %Y")
