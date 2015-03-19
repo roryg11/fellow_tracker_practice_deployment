@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 feature "Users" do
-  scenario "Super User can create a fellow" do
+  scenario "Staff can create a fellow" do
     User.create!(
       first_name: "Rory",
       last_name: "Grant",
       email: "rory.c.grant@gmail.com",
       password: "roryrocks",
-      admin: true
+      role: "Staff"
     )
 
     Cohort.create!(
@@ -25,7 +25,6 @@ feature "Users" do
     fill_in "First name", with: "Tina"
     fill_in "Last name", with: "Loh"
     fill_in "Email", with: "tinalola@gmail.com"
-    select "2015", :from => "user_cohort_id"
     click_on "submit-user-button"
 
     expect(page).to have_content("Tina")

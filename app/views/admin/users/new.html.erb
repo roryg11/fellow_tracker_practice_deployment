@@ -1,21 +1,17 @@
 <h1>Add New User</h1>
 
 <div class="container">
-  <%= form_for @user, url: admin_users_path do |f| %>
+  <%= form_for [:admin, @user] do |f| %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
 
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-   <%= f.label :cohort_id %>
-   <%=f.collection_select(:cohort_id, Cohort.all, :id, :full_name, {prompt: "Select a Cohort"}) %>
-   <%= f.submit "Create New Fellow", id:"submit-user-button" %>
-
+    <%= f.submit "Create New Fellow", id:"submit-user-button" %>
   <%end%>
 
 </div>

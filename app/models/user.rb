@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :memberships
   self.inheritance_column = :role
 
-  def self.types
+  def self.roles
     %w(Fellow Coach Staff)
   end
 

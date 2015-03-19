@@ -12,8 +12,10 @@
   Email: <%= @user.email %>
 </p>
 <p>
-<% if @user.cohort_id != nil %>
-Cohort: <%= @user.cohort.full_name %>
+  <% @user.cohorts.each do |cohort| %>
+    <% if user.cohort != nil%>
+    Cohort: <%= @user.cohort.full_name %>
+    <%end%>
 <%end%>
 </p>
 <%= link_to "New Goal", new_admin_user_goal_path(current_user), id: 'new-goal-action' %>

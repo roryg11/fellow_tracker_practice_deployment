@@ -5,13 +5,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users do
-      collection do
-        get 'staff'
-      end
       resources :goals
     end
   end
 
+  resources :fellows, controller: 'users', role: 'Fellow'
+  resources :coaches, controller: 'users', role: 'Coach'
+  resources :staff, controller: 'users', role: 'Staff'
   resources :cohorts
 
   # The priority is based upon order of creation: first created -> highest priority.
