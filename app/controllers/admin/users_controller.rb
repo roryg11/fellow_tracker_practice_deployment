@@ -12,7 +12,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def create
-    @user = role_class.create(user_params.merge({password: "12345678", password_confirmation: "12345678"}))
+    @user = role_class.new(user_params.merge({password: "12345678", password_confirmation: "12345678"}))
     if @user.save
       redirect_to admin_users_path, notice: "Fellow successfully saved."
     else
