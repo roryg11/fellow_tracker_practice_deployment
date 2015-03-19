@@ -1,18 +1,17 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :set_role
 
   def index
     @users = User.all
   end
 
   def new
-    @user = role_class.new
+    @user = User.new
     @users = User.all
   end
 
   def create
-    @user = role_class.new(user_params.merge({password: "12345678", password_confirmation: "12345678"}))
+    @user = User.new(user_params.merge({password: "12345678", password_confirmation: "12345678"}))
     if @user.save
       redirect_to admin_users_path, notice: "Fellow successfully saved."
     else
@@ -44,22 +43,10 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(role.underscore.to_sym).permit(:first_name, :last_name, :email, :role)
-  end
-
-  def set_role
-    @role = role
-  end
-
-  def role
-    User.roles.include?(params[:role]) ? params[:role] : "User"
-  end
-
-  def role_class
-    role.constantize
+    params.require(:user).permit(:first_name, :last_name, :email, :role)
   end
 
   def set_user
-    @user = role_class.find(params[:id])
+    @user = User.find(params[:id])
   end
 end
