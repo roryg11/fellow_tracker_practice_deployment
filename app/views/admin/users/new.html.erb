@@ -12,7 +12,8 @@
     <%= f.email_field :email %>
 
     <%= f.label :role %>
-    <%= f.select :role, User.roles %>
+    <%= f.select :role, User.roles.map {|r| [r.humanize, r.camelcase]}, {}, disabled: @role !="User" %>
+
 
     <%= f.submit "Create New Fellow", id:"submit-user-button" %>
   <%end%>
