@@ -48,14 +48,14 @@ feature "Users" do
     click_on 'Dashboard'
     click_on 'new-goal-action'
     fill_in 'goal_description', with: 'goal description'
-    fill_in 'goal_due_date', with: '2015-03-25'
+    fill_in 'goal_due_date', with: (Date.today + 2)
     click_on 'save-goal-action'
 
     expect(page).to have_content('goal description')
-    expect(page).to have_content('2015-03-25')
+    expect(page).to have_content("#{Date.today + 2}")
   end
 
-  xscenario 'Fellow can not see another fellows goals' do
+  scenario 'Fellow can not see another fellows goals' do
     other_user = User.create!(
       email: 'other-user@example.com',
       password: 'abcd1234',
@@ -70,6 +70,7 @@ feature "Users" do
     )
 
     visit root_path
+    click_on "Login"
     fill_in "Email", with: 'user@example.com'
     fill_in "Password", with: "abcd1234"
     click_on "Log in"
