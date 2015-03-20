@@ -17,7 +17,7 @@
         <% else %>
           <li><%= link_to "Dashboard", staff_staff_path(current_user) %></li>
           <li><%= link_to 'Cohorts', staff_cohorts_path %></li>
-          <li><%= link_to 'Fellows', staff_fellows_path({role: "Fellow"}) %></li>
+          <li><%= link_to 'Fellows', staff_fellows_path, id: 'show-fellows-action' %></li>
         <% end  %>
 
         <% if current_user.role == 'Staff' %>
