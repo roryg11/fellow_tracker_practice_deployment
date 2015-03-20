@@ -11,7 +11,11 @@ class GoalsController < ApplicationController
   end
 
   def history
-    @goals = @user.goals
+    if @user.memberships.any?
+      @goals = @user.goals
+    else
+      redirect_to goals_path
+    end
     # @cohort_start_date = @user.cohort.start_date
     # @week_number = 1
     # @first_monday = @user.cohort.first_monday
@@ -32,6 +36,13 @@ class GoalsController < ApplicationController
 
   def new
     @goal = @user.goals.new
+  end
+  def show
+    if @user.memberships.any?
+      @goals = @user.goals
+    else
+      redirect_to goals_path
+    end
   end
 
   def create
