@@ -5,14 +5,14 @@ Rails.application.routes.draw do
 
   resources :goals, :except => [:index]
 
-  get 'dashboard' => 'goals#goals'
+  get 'goals' => 'goals#goals'
   get 'goals/history' => 'goals#history'
 
   namespace :staff do
     resources :fellows do
       resources :goals
     end
-    resources :coaches 
+    resources :coaches
     resources :staffs
     resources :cohorts
   end

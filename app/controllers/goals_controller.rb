@@ -37,7 +37,7 @@ class GoalsController < ApplicationController
   def create
     @goal = @user.goals.create(goal_params)
     if @goal.save
-      redirect_to dashboard_path
+      redirect_to goals_path
     else
       render :new
     end
@@ -51,7 +51,7 @@ class GoalsController < ApplicationController
     @goal = @user.goals.find(params[:id])
     @goal.update(goal_params)
     if @goal.save
-      redirect_to dashboard_path
+      redirect_to goals_path
     else
       render :edit
     end
@@ -60,7 +60,7 @@ class GoalsController < ApplicationController
   def destroy
     @goal = @user.goals.find(params[:id])
     @goal.destroy
-    redirect_to dashboard_path
+    redirect_to goals_path
     flash[:alert] = "Goal has been deleted."
   end
 
