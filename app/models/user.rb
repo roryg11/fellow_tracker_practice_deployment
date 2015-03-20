@@ -15,4 +15,8 @@ class User < ActiveRecord::Base
   scope :fellows, -> {where(role: 'Fellow')}
   scope :coaches, -> {where(role: 'Coach')}
   scope :staff, -> {where(role: 'Staff')}
+
+  def fellow?
+    role == 'Fellow'
+  end
 end
