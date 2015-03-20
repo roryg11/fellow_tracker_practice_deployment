@@ -45,7 +45,7 @@ feature "Users" do
     fill_in "Email", with: 'user@example.com'
     fill_in "Password", with: "abcd1234"
     click_on "Log in"
-    click_on 'Dashboard'
+    click_on 'Goals'
     click_on 'new-goal-action'
     fill_in 'goal_description', with: 'goal description'
     fill_in 'goal_due_date', with: (Date.today + 2)
