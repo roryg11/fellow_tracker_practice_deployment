@@ -33,49 +33,4 @@ feature "Users" do
     expect(page).to have_content("Loh")
     expect(page).to have_content("tinalola@gmail.com")
   end
-
-  scenario 'Fellow can add a goal' do
-    Fellow.create!(
-      email: 'user@example.com',
-      password: 'abcd1234',
-      password_confirmation: 'abcd1234'
-    )
-
-    visit root_path
-    click_on "Login"
-    fill_in "Email", with: 'user@example.com'
-    fill_in "Password", with: "abcd1234"
-    click_on "Log in"
-
-    click_on 'new-goal-action'
-    fill_in 'goal_description', with: 'goal description'
-    fill_in 'goal_due_date', with: (Date.today + 2)
-    click_on 'save-goal-action'
-
-    expect(page).to have_content('goal description')
-    expect(page).to have_content("#{Date.today + 2}")
-  end
-
-  scenario 'Fellow can not see another fellows goals' do
-    other_user = User.create!(
-      email: 'other-user@example.com',
-      password: 'abcd1234',
-      password_confirmation: 'abcd1234'
-    )
-    other_user.goals.create!(description: 'other persons goal', due_date: '2015-03-29')
-
-    User.create!(
-      email: 'user@example.com',
-      password: 'abcd1234',
-      password_confirmation: 'abcd1234'
-    )
-
-    visit root_path
-    click_on "Login"
-    fill_in "Email", with: 'user@example.com'
-    fill_in "Password", with: "abcd1234"
-    click_on "Log in"
-
-    expect(page).to_not have_content('other persons goal')
-  end
 end
