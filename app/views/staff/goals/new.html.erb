@@ -1,7 +1,6 @@
 <div class="container">
     <h1>Create New Goal</h1>
-
-    <%= form_for [@user, @goal], url: staff_fellow_goals_path, html: {class: "form-horizontal"} do |f| %>
+    <%= form_for [@fellow, @goal], url: staff_fellow_goals_path, html: {class: "form-horizontal"} do |f| %>
       <%= render 'shared/errors', object: @goal %>
       <div class='form-group'>
         <%=f.label :description, class: "col-md-1 control-label" %>
@@ -20,5 +19,4 @@
         <%=f.submit id: "save-goal-action", class:"col-md-1 btn btn-info" %>
       </div>
     <% end %>
-
 </div>

@@ -29,8 +29,8 @@
               <li><%= link_to 'Cohorts', staff_cohorts_path %></li>
               <li><%= link_to 'Coaches', staff_coaches_path({role: "Coach"}) %></li>
             <% else %>
-              <li class="active"> <%= link_to 'Goals', goals_path(current_user) %><span class="sr-only">(current)</span></a></li>
-              <li><%= link_to 'Goal History', goals_history_path(current_user) %></li>
+              <li class="active"> <%= link_to 'Goals', goals_path %><span class="sr-only">(current)</span></a></li>
+              <li><%= link_to 'Goal History', goals_history_path %></li>
             <% end  %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
