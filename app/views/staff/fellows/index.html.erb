@@ -11,13 +11,13 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+    <% @fellows.each do |fellow| %>
       <tr>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.role %></td>
-        <td><%= link_to "Show", admin_user_path(user) %></td>
+        <td><%= fellow.first_name %></td>
+        <td><%= fellow.last_name %></td>
+        <td><%= fellow.email %></td>
+        <td><%= fellow.role %></td>
+        <td><%= link_to "Show", staff_fellow_path(fellow) %></td>
       </tr>
     <%end%>
   </tbody>

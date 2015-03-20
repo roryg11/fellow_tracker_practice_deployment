@@ -1,7 +1,6 @@
-<h1>Add New User</h1>
-
+<h1>Edit Fellow</h1>
 <div class="container">
-  <%= form_for @user, url: admin_user_path do |f| %>
+  <%= form_for @staff, url: staff_staff_path do |f| %>
 
   <%= f.label :first_name %>
   <%= f.text_field :first_name %>
@@ -12,8 +11,6 @@
   <%= f.label :email %>
   <%= f.email_field :email %>
 
-   <%= f.label :cohort_id %>
-   <%=f.collection_select(:cohort_id, Cohort.all, :id, :year) %>
    <%= f.submit "Update Fellow", id:"submit-user-button" %>
 
   <%end%>

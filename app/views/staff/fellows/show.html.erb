@@ -1,0 +1,48 @@
+<h1>Show Fellow</h1>
+
+<p>
+  First Name:<%= @fellow.first_name %>
+</p>
+
+<p>
+  Last Name:<%= @fellow.last_name %>
+</p>
+
+<p>
+  Email: <%= @fellow.email %>
+</p>
+
+<%= link_to "New Goal", new_staff_fellow_goal_path(@fellow), id: 'new-goal-action' %>
+
+<div class="container-fluid">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Due Date</th>
+        <th>Completed?</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @goals.each do |goal| %>
+        <tr>
+          <td><%= goal.description %></td>
+          <td><%= goal.due_date %></td>
+          <td>
+            <% if goal.completed == false  %>
+              <%= link_to "Complete", staff_fellow_goal_path(@fellow, goal, "goal[completed]" => true), method: :put %>
+            <% else %>
+              Done
+            <% end %>
+          </td>
+          <td><%= link_to "Edit goal", edit_staff_fellow_goal_path(@fellow, goal) %></td>
+          <td><%= link_to "Delete goal", staff_fellow_goal_path(@fellow,goal), method: :delete, data: {confirm: "Are you sure?"} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

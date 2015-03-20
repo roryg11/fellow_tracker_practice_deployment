@@ -1,0 +1,12 @@
+<h1>Create New Goal</h1>
+
+<%= form_for [@user, @goal], url: goals_path,  html: {class: "form-horizontal"} do |f| %>
+  <%= render 'shared/errors', object: @goal %>
+  <%=f.label :description %>
+  <%=f.text_field :description, id: "goal_description" %>
+  <%=f.label :due_date %>
+  <%=f.date_field :due_date %>
+  <%=f.label :completed %>
+  <%=f.check_box :completed %>
+  <%=f.submit id: "save-goal-action" %>
+<% end %>

@@ -1,7 +1,7 @@
-<h1>Add New User</h1>
+<h1>Add New Staff Member</h1>
 
 <div class="container">
-  <%= form_for [:admin, @user] do |f| %>
+  <%= form_for [:staff, @staff] do |f| %>
     <%= f.label :first_name %>
     <%= f.text_field :first_name %>
 
@@ -11,10 +11,7 @@
     <%= f.label :email %>
     <%= f.email_field :email %>
 
-    <%= f.label :role %>
-    <%= f.select :role, User.roles.map {|r| [r.humanize, r.camelcase]}, {} %>
-
-    <%= f.submit "Create New Fellow", id:"submit-user-button" %>
+    <%= f.submit "Create New Staff Member", id:"submit-user-button" %>
   <%end%>
 
 </div>

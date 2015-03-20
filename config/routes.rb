@@ -3,16 +3,20 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  namespace :admin do
-    resources :users do
+  resources :goals, :except => [:index]
+
+  get 'dashboard' => 'goals#goals'
+  get 'goals/history' => 'goals#history'
+
+  namespace :staff do
+    resources :fellows do
       resources :goals
     end
+    resources :coaches 
+    resources :staffs
+    resources :cohorts
   end
 
-  resources :fellows, controller: 'users', role: 'Fellow'
-  resources :coaches, controller: 'users', role: 'Coach'
-  resources :staff, controller: 'users', role: 'Staff'
-  resources :cohorts
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,19 @@
+<h1>Add New Staff Member</h1>
+
+<div class="container">
+  <%= form_for @staff, url: staff_staff_path do |f| %>
+
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.submit "Update Staff Member", id:"submit-user-button" %>
+
+  <%end%>
+
+</div>

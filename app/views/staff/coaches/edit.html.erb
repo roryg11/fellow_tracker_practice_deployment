@@ -1,0 +1,19 @@
+<h1>Edit Coach</h1>
+
+<div class="container">
+  <%= form_for @coach, url: staff_coach_path do |f| %>
+
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+   <%= f.submit "Update Coach", id:"submit-user-button" %>
+
+  <%end%>
+
+</div>

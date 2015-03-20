@@ -1,0 +1,26 @@
+<h1> <%= current_user.first_name %>'s Goals </h1>
+
+<div class="container">
+    <table class="table">
+      <thead>
+        <h2>Week of <%= @monday.strftime("%B %d %Y") %> - <%= @sunday.strftime("%B %d %Y") %> <h2>
+        <tr>
+          <th>Goal Description</th>
+          <th>Goal Due Date</th>
+          <th>Completed?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @goals.each do |goal|  %>
+          <tr>
+            <td><%= goal.description %>
+            <td><%= goal.due_date %></td>
+            <td><%= goal.completed %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+
+
+<%= link_to "New Goal", new_goal_path %>

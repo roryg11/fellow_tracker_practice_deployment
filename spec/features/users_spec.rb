@@ -17,11 +17,12 @@ feature "Users" do
       )
 
     visit root_path
+    click_on "Login"
     fill_in "Email", with: "rory.c.grant@gmail.com"
     fill_in "Password", with: "roryrocks"
     click_on "Log in"
     visit root_path
-    click_on 'new-user-button'
+    click_on 'new-fellow-button'
     fill_in "First name", with: "Tina"
     fill_in "Last name", with: "Loh"
     fill_in "Email", with: "tinalola@gmail.com"
@@ -40,10 +41,11 @@ feature "Users" do
     )
 
     visit root_path
+    click_on "Login"
     fill_in "Email", with: 'user@example.com'
     fill_in "Password", with: "abcd1234"
     click_on "Log in"
-
+    click_on 'Dashboard'
     click_on 'new-goal-action'
     fill_in 'goal_description', with: 'goal description'
     fill_in 'goal_due_date', with: '2015-03-25'
@@ -53,7 +55,7 @@ feature "Users" do
     expect(page).to have_content('2015-03-25')
   end
 
-  scenario 'Fellow can not see another fellows goals' do
+  xscenario 'Fellow can not see another fellows goals' do
     other_user = User.create!(
       email: 'other-user@example.com',
       password: 'abcd1234',
