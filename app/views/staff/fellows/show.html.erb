@@ -1,16 +1,8 @@
 <h1>Show Fellow</h1>
 
-<p>
-  First Name:<%= @fellow.first_name %>
-</p>
-
-<p>
-  Last Name:<%= @fellow.last_name %>
-</p>
-
-<p>
-  Email: <%= @fellow.email %>
-</p>
+<p>First Name:<%= @fellow.first_name %></p>
+<p>Last Name:<%= @fellow.last_name %></p>
+<p>Email: <%= @fellow.email %></p>
 
 <%= link_to "New Goal", new_staff_fellow_goal_path(@fellow), id: 'new-goal-action' %>
 
