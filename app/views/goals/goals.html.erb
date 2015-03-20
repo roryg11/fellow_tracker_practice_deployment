@@ -22,6 +22,8 @@
                 <span class="glyphicon glyphicon-ok done"></span>
               <% elsif goal.due_date_soon? && goal.completed == false%>
                 <span class="glyphicon glyphicon-exclamation-sign due-soon"></span>
+              <% elsif goal.overdue? && goal.completed == false%>
+                <span class="glyphicon glyphicon-exclamation-sign overdue"></span>
               <% end  %>
             </td>
             <td>
