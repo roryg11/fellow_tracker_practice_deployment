@@ -1,25 +1,25 @@
-<h2>Fellows List</h2>
+<div class="container">
+  <h2>Fellows List</h2>
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Role</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @fellows.each do |fellow| %>
+  <table class="table table-bordered">
+    <thead>
       <tr>
-        <td><%= fellow.first_name %></td>
-        <td><%= fellow.last_name %></td>
-        <td><%= fellow.email %></td>
-        <td><%= fellow.role %></td>
-        <td><%= link_to "Show", staff_fellow_path(fellow) %></td>
-        <td><%= link_to "Edit", edit_staff_fellow_path(fellow) %></td>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th></th>
       </tr>
-    <%end%>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @fellows.each do |fellow| %>
+        <tr>
+          <td><%= link_to "#{fellow.first_name} #{fellow.last_name}", staff_fellow_path(fellow) %></td>
+          <td><%= fellow.email %></td>
+          <td><%= fellow.role %></td>
+          <td><%= link_to "Edit", edit_staff_fellow_path(fellow) %></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>

@@ -1,24 +1,27 @@
-<h2>Staff List</h2>
+<div class="container">
+  <h2>Staff List</h2>
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Role</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @staff.each do |staff| %>
+  <table class="table table-bordered">
+    <thead>
       <tr>
-        <td><%= staff.first_name %></td>
-        <td><%= staff.last_name %></td>
-        <td><%= staff.email %></td>
-        <td><%= staff.role %></td>
-        <td><%= link_to "Show", staff_staff_path(staff) %></td>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th></th>
       </tr>
-    <%end%>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @staff.each do |staff| %>
+        <tr>
+          <td><%= staff.first_name %></td>
+          <td><%= staff.last_name %></td>
+          <td><%= staff.email %></td>
+          <td><%= staff.role %></td>
+          <td><%= link_to "Show", staff_staff_path(staff) %></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>

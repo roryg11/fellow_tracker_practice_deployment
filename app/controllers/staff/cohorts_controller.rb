@@ -12,7 +12,7 @@ class Staff::CohortsController < ApplicationController
   def create
     @cohort = Cohort.create(cohort_params)
     if @cohort.save
-      redirect_to cohorts_path, notice: "Cohort successfully saved."
+      redirect_to staff_cohorts_path, notice: "Cohort successfully saved."
     else
       render :new, alert: "Cohort could not be saved."
     end
@@ -26,7 +26,7 @@ class Staff::CohortsController < ApplicationController
     @cohort = Cohort.find(params[:id])
     @cohort.update(cohort_params)
     if @cohort.save
-      redirect_to cohort_path
+      redirect_to staff_cohort_path
       flash[:notice] = "Cohort successfully updated."
     else
       render :edit

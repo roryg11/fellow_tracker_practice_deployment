@@ -1,0 +1,44 @@
+<div class="container">
+
+  <h2>Cohort List</h2>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>
+      Season      
+      </th>
+        <th>
+          Year
+        </th>
+        <th>
+          Start Date
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cohorts.each do |cohort| %>
+        <tr>
+          <td>
+            <%= cohort.season %>
+          </td>
+
+          <td>
+            <%= cohort.year %>
+          </td>
+
+          <td>
+            <%= cohort.start_date %>
+          </td>
+          <!-- <td>
+            <%= cohort.users %>
+          </td> -->
+          <td>
+            <%= link_to "Show", staff_cohort_path(cohort) %>
+          </td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>
