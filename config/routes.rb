@@ -2,12 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   root 'welcome#index'
-
-  resources :goals, :except => [:index]
-
   get 'goals' => 'goals#goals'
   get 'goals/history' => 'goals#history'
-
+  resources :goals, :except => [:index, :show]
   namespace :staff do
     resources :fellows do
       resources :goals

@@ -49,7 +49,7 @@ feature 'fellow goal tracking' do
 
 
     within('tbody tr:text("goal description")') do
-      expect(page).to have_content('true')
+      page.find('.done')
     end
   end
 end

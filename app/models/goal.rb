@@ -8,4 +8,8 @@ class Goal < ActiveRecord::Base
       errors.add(:due_date, "can't be in the past")
     end
   end
+
+  def due_date_soon?
+    (due_date - Date.today).to_i <= 2
+  end
 end

@@ -25,4 +25,16 @@ describe Cohort, :type => :model do
     expected = Date.new(2015, 05, 11)
     expect(new_cohort.first_monday).to eq(expected)
   end
+
+  it "weeks elapsed since launch phase" do
+    Date.stub(today: Date.new(2015, 4, 16))
+
+    new_cohort = Cohort.create!(
+      season: "Spring",
+      year: "2015",
+      start_date: Date.new(2014, 12, 15)
+    )
+
+    expect(new_cohort.weeks_elapsed).to eq(6)
+  end
 end
