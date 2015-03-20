@@ -1,4 +1,4 @@
-class Admin::GoalsController < ApplicationController
+class Staff::GoalsController < ApplicationController
   before_action :authenticate_user!
   before_action do
     @fellow = Fellow.find(params[:fellow_id])
