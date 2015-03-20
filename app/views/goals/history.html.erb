@@ -1,1 +1,25 @@
 <h1><%= @user.first_name%> <%= @user.last_name %>'s Goal History</h1>
+
+
+<table class="table">
+  <% @cohort_phase_array.each do |week| %>
+  <thead>
+    <tr>
+      <h4>Week <%=week[:week_number] %>, <%=week[:start]%> - <%= week[:end] %></h4>
+      <th>Description</th>
+      <th>Due Date</th>
+      <th>Completed</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= week[:goals].each do |goal| %>
+    <tr>
+      <td><%= goal.description %></td>
+      <td><%= goal.due_date %></td>
+      <td><%= goal.completed %></td>
+      <td>PUT CHECK BOX HERE</td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>

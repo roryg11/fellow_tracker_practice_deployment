@@ -9,6 +9,7 @@
           <th>Goal Due Date</th>
           <th>Completed?</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -16,12 +17,19 @@
           <tr>
             <td><%= goal.description %>
             <td><%= goal.due_date %></td>
-            <td><%= goal.completed %></td>
+            <td>
+              <% if goal.completed %>
+                <span class="glyphicon glyphicon-ok done"></span>
+              <% else %>
+                <span class="glyphicon glyphicon-remove not-done"></span>
+              <% end %>
+            </td>
             <td>
               <% unless goal.completed %>
                 <%= link_to 'Complete', goal_path(goal, goal: {completed: true}), class: 'btn btn-primary complete-goal-action', method: :put %>
               <% end %>
             </td>
+            <td></td>
           </tr>
         <% end %>
       </tbody>
