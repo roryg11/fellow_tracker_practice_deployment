@@ -13,9 +13,9 @@ class GoalsController < ApplicationController
   def history
     if @user.memberships.any?
       @goals = @user.goals
-      @cohort_start_date = @user.cohort.start_date
+      @cohort_start_date = @user.cohorts[0].start_date
       @week_number = 1
-      @first_monday = @user.cohort.first_monday
+      @first_monday = @user.cohorts[0].first_monday
       @cohort_phase_array = []
       weeks_since_launch = ((Date.today - @first_monday)/7).ceil.to_i
       weeks_since_launch.times do

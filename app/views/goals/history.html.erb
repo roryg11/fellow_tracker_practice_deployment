@@ -13,13 +13,14 @@
     </tr>
   </thead>
   <tbody>
-    <%= week[:goals].each do |goal| %>
+    <% week[:goals].each do |goal| %>
     <tr>
       <td><%= goal.description %></td>
       <td><%= goal.due_date %></td>
       <td><%= goal.completed %></td>
       <td>PUT CHECK BOX HERE</td>
     </tr>
+    <% end %>
   </tbody>
   <% end %>
 </table>
