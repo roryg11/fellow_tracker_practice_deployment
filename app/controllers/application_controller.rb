@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
    if user.fellow?
      goals_path
    else
-     staff_staffs_path
+     staff_staff_path(user)
    end
   end
 
