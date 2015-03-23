@@ -3,7 +3,11 @@
   <table class="table">
     <thead>
       <h2>Week of <%= @monday.strftime("%B %d %Y") %> - <%= @sunday.strftime("%B %d %Y") %> <h2>
-      <h4>Completion Percentage:  <%= (((@goals.where(completed: true).length).to_f / (@goals.length).to_f) * 100).floor%>% </h4>
+      <h4>Completion Percentage:
+        <% if @goals.where(completed: true) && @goals.length > 0 %>
+          <%= (((@goals.where(completed: true).length).to_f / (@goals.length).to_f) * 100).floor%> %
+        <% end %> 
+      </h4>
       <tr>
         <th>Goal Description</th>
         <th>Goal Due Date</th>
@@ -24,7 +28,7 @@
                 <span class="glyphicon glyphicon-exclamation-sign overdue"></span>
             <% elsif goal.due_date_soon? %>
               <span class="glyphicon glyphicon-exclamation-sign due-soon"></span>
-            <% end  %>
+            <% end %>
           </td>
           <td>
             <% unless goal.completed %>
