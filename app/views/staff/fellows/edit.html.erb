@@ -1,20 +1,39 @@
-<h1>Edit Fellow</h1>
 <div class="container">
-  <%= form_for @fellow, url: staff_fellow_path do |f| %>
+  <h1 class="page-header">Edit Fellow</h1>
+</div>
+<div class="container">
+  <%= form_for @fellow, url: staff_fellow_path, html: {class: "form-horizontal"} do |f| %>
+    <div class="form-group">
+      <%= f.label :first_name, class: " col-md-2 form-label" %>
+      <div class="col-md-3">
+        <%= f.text_field :first_name, class: "form-control" %>
+      </div>
+    </div>
 
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+    <div class="form-group">
+      <%= f.label :last_name, class: "form-label col-md-2" %>
+      <div class="col-md-3">
+        <%= f.text_field :last_name, class: "form-control" %>
+      </div>
+    </div>
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
+    <div class="form-group">
+      <%= f.label :email, class: "form-label col-md-2" %>
+      <div class="col-md-3">
+        <%= f.email_field :email, class: "form-control" %>
+      </div>
+    </div>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+    <div class="form-group">
+      <%= f.label :role, class: "form-label col-md-2" %>
+      <div class="col-md-3">
+        <%= f.select :role, ["Staff", "Fellow", "Coach"], {include_blank: "role"}, class: "form-control col-md-3" %>
+      </div>
+    </div>
 
-  <%= f.label :role %>
-  <%= f.select :role, ["Staff", "Fellow", "Coach"], {include_blank: "role"}, class: "form-control" %>
-
-  <%= f.submit "Update Fellow", id:"submit-user-button" %>
+    <div class="form-group">
+      <%= f.submit "Update Fellow", id:"submit-user-button", class: "btn btn-primary col-md-offset-2" %>
+    </div>
 
   <%end%>
 
