@@ -5,10 +5,12 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(user)
-   if user.fellow?
+   if user.role == "Fellow"
      goals_path
-   else
+   elsif user.role == "Staff"
      staff_staff_path(user)
+   elsif user.role == "Coach"
+     staff_coach_path(user)
    end
   end
 
