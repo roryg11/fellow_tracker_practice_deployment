@@ -1,42 +1,40 @@
-<h1> <%= current_user.first_name %>'s Goals </h1>
-
 <div class="container">
-    <table class="table">
-      <thead>
-        <h2>Week of <%= @monday.strftime("%B %d %Y") %> - <%= @sunday.strftime("%B %d %Y") %> <h2>
+  <h1> <%= current_user.first_name %>'s Goals </h1>
+  <table class="table">
+    <thead>
+      <h2>Week of <%= @monday.strftime("%B %d %Y") %> - <%= @sunday.strftime("%B %d %Y") %> <h2>
+      <h4>Completion Percentage:  <%= (((@goals.where(completed: true).length).to_f / (@goals.length).to_f) * 100).floor%>% </h4>
+      <tr>
+        <th>Goal Description</th>
+        <th>Goal Due Date</th>
+        <th>Completed?</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @goals.each do |goal|  %>
         <tr>
-          <th>Goal Description</th>
-          <th>Goal Due Date</th>
-          <th>Completed?</th>
-          <th></th>
-          <th></th>
+          <td><%= goal.description %>
+          <td><%= goal.due_date %></td>
+          <td>
+            <% if goal.completed %>
+              <span class="glyphicon glyphicon-ok done"></span>
+            <% elsif goal.overdue? %>
+                <span class="glyphicon glyphicon-exclamation-sign overdue"></span>
+            <% elsif goal.due_date_soon? %>
+              <span class="glyphicon glyphicon-exclamation-sign due-soon"></span>
+            <% end  %>
+          </td>
+          <td>
+            <% unless goal.completed %>
+              <%= link_to 'Complete', goal_path(goal, goal: {completed: true}), class: 'btn btn-primary complete-goal-action', method: :put %>
+            <% end %>
+          </td>
+          <td></td>
         </tr>
-      </thead>
-      <tbody>
-        <% @goals.each do |goal|  %>
-          <tr>
-            <td><%= goal.description %>
-            <td><%= goal.due_date %></td>
-            <td>
-              <% if goal.completed %>
-                <span class="glyphicon glyphicon-ok done"></span>
-              <% elsif goal.overdue? %>
-                  <span class="glyphicon glyphicon-exclamation-sign overdue"></span>
-              <% elsif goal.due_date_soon? %>
-                <span class="glyphicon glyphicon-exclamation-sign due-soon"></span>
-              <% end  %>
-            </td>
-            <td>
-              <% unless goal.completed %>
-                <%= link_to 'Complete', goal_path(goal, goal: {completed: true}), class: 'btn btn-primary complete-goal-action', method: :put %>
-              <% end %>
-            </td>
-            <td></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "New Goal", new_goal_path, id: "new-goal-action", class: "btn btn-primary" %>
 </div>
-
-
-<%= link_to "New Goal", new_goal_path, id: "new-goal-action" %>
