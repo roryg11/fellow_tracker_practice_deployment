@@ -20,10 +20,10 @@
             <td>
               <% if goal.completed %>
                 <span class="glyphicon glyphicon-ok done"></span>
-              <% elsif goal.due_date_soon? && goal.completed == false%>
+              <% elsif goal.overdue? %>
+                  <span class="glyphicon glyphicon-exclamation-sign overdue"></span>
+              <% elsif goal.due_date_soon? %>
                 <span class="glyphicon glyphicon-exclamation-sign due-soon"></span>
-              <% elsif goal.overdue? && goal.completed == false%>
-                <span class="glyphicon glyphicon-exclamation-sign overdue"></span>
               <% end  %>
             </td>
             <td>

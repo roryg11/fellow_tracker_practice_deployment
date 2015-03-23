@@ -14,6 +14,6 @@ class Goal < ActiveRecord::Base
   end
 
   def overdue?
-    (due_date - Date.today).to_i < 0
+    (due_date - Date.today).to_i <= 0
   end
 end
