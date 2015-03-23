@@ -11,6 +11,9 @@
   <%= f.label :email %>
   <%= f.email_field :email %>
 
+  <%= f.label :role %>
+  <%= f.select :role, ["Staff", "Fellow", "Coach"], {include_blank: "role"}, class: "form-control" %>
+
   <%= f.submit "Update Fellow", id:"submit-user-button" %>
 
   <%end%>

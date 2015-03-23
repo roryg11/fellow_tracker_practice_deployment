@@ -27,8 +27,8 @@ class Staff::CoachesController < ApplicationController
     @coach = Coach.find(params[:id])
     @coach.update(coach_params)
     if @coach.save
-      redirect_to staff_coach_path
-      flash[:notice] = "coach successfully updated."
+      redirect_to staff_coaches_path
+      flash[:notice] = "Coach successfully updated."
     else
       render :edit
       flash[:notice] = "Coach could not be updated."
