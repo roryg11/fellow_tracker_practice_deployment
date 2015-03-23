@@ -27,7 +27,7 @@ class Staff::FellowsController < ApplicationController
     @fellow = Fellow.find(params[:id])
     @fellow.update(fellow_params)
     if @fellow.save
-      redirect_to staff_fellow_path
+      redirect_to staff_fellows_path
       flash[:notice] = "fellow successfully updated."
     else
       render :edit
