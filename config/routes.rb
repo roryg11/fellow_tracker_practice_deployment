@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     end
     resources :coaches
     resources :staffs
-    resources :cohorts
+    resources :cohorts do
+      resources :memberships
+    end
   end
 
 

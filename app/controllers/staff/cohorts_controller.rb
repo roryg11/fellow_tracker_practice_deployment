@@ -1,6 +1,7 @@
 class Staff::CohortsController < ApplicationController
   before_action :authenticate_user!
 
+
  def index
     @cohorts = Cohort.all
   end
@@ -20,6 +21,7 @@ class Staff::CohortsController < ApplicationController
 
   def edit
     @cohort = Cohort.find(params[:id])
+    @membership = @cohort.memberships.new
   end
 
   def update
@@ -42,6 +44,12 @@ class Staff::CohortsController < ApplicationController
 
   def cohort_params
     params.require(:cohort).permit(:season, :start_date, :year)
+  end
+  def membership_params
+    params.require(:membership).permit(
+      :user_id,
+      :cohort_id,
+    )
   end
 
 end

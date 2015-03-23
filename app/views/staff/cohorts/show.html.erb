@@ -1,16 +1,10 @@
 <h1>Show Cohort</h1>
 
-<p>
-  Year: <%= @cohort.year %>
-</p>
+<p>Year: <%= @cohort.year %></p>
 
-<p>
-  Season: <%= @cohort.season %>
-</p>
+<p>Season: <%= @cohort.season %></p>
 
-<p>
-  Start Date: <%= @cohort.start_date %>
-</p>
+<p>Start Date: <%= @cohort.start_date %></p>
   <h2>Cohort Fellows</h2>
   <% @cohort.users.each do |user| %>
     <li>First name: <%= user.first_name %></li>

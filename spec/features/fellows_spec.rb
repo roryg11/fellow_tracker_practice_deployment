@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'date'
 
 feature 'fellow goal tracking' do
   scenario 'a fellow can create a goal' do
@@ -18,11 +19,11 @@ feature 'fellow goal tracking' do
     fill_in 'goal_description', with: 'goal description'
     fill_in 'goal_due_date', with: (Date.today + 2)
     click_on 'save-goal-action'
+    save_and_open_page
 
     expect(page).to have_content('goal description')
     expect(page).to have_content("#{Date.today + 2}")
   end
-
   scenario 'a fellow can mark a goal as completed' do
     fellow = Fellow.create!(
       email: 'fellow@uncollege.org',

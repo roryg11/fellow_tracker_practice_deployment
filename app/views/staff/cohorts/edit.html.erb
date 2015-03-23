@@ -1,15 +1,33 @@
-<%= form_for(@cohort) do |f| %>
-<%= render 'shared/errors', object: @cohort %>
+<%= form_for @cohort, url: staff_cohort_path, html: {method: "patch"} do |f| %>
+  <%= render 'shared/errors', object: @cohort %>
+  <div class='form-group'>
+  <%= f.label :start_date, class: "col-md-1 control-label" %>
+    <div class="col-md-4">
+      <%= f.date_field :start_date, class: "form-control" %>
+    </div>
+  </div>
+  <div class='form-group'>
+  <%= f.label :season, class: "col-md-1 control-label" %>
+    <div class="col-md-4">
+      <%= f.text_field :season, class: "form-control" %>
+    </div>
+  </div>
+  <div class='form-group'>
+  <%= f.label :year, class: "col-md-1 control-label" %>
+    <div class="col-md-4">
+        <%= f.text_field :year, class: "form-control" %>
+    </div>
+  </div>
+  <%= f.submit "Update Cohort" %>
+<% end %>
 
-<%= f.label :start_date %>
-<%= f.date_field :start_date %>
-
-<%= f.label :season %>
-<%= f.text_field :season %>
-
-<%= f.label :year %>
-<%= f.text_field :year %>
-
-<%= f.submit "Update Cohort" %>
-
+<%= form_for [@cohort, @membership], url: staff_cohort_memberships_path(@cohort) do |f| %>
+  <%= render 'shared/errors', object: @cohort %>
+    <div class='form-group'>
+        <%= f.label :fellow, "Add Fellow", class: "col-md-1 control-label" %>
+        <div class="col-md-4">
+          <%= f.collection_select :user_id, Fellow.all, :id, :full_name, {include_blank: "Select User to Add"}, class: "form-control" %>
+        </div>
+    </div>
+  <%= f.submit "Add Member" %>
 <% end %>

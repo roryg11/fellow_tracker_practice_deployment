@@ -28,7 +28,7 @@ class GoalsController < ApplicationController
         @cohort_phase_array.push(week_hash)
         @week_number+=1
        end
-      @cohort_phase_array
+     @cohort_phase_array
     else
       redirect_to goals_path
     end

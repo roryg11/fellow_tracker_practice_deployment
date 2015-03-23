@@ -3,6 +3,7 @@ class Cohort < ActiveRecord::Base
     validate :start_date_is_a_monday
     has_many :users, through: :memberships
     has_many :memberships
+    accepts_nested_attributes_for :memberships, :allow_destroy => true
     def full_name
         "#{season} #{year}"
     end
@@ -22,5 +23,9 @@ class Cohort < ActiveRecord::Base
 
     def weeks_elapsed
       (((Date.today - (start_date + voyage_phase)).to_i)/7.0).ceil
+    end
+    def self.build
+      cohort = self.new
+      cohort.memberships.build
     end
 end
