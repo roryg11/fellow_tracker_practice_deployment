@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Staff List</h2>
+  <h2 class= "page-header">Staff List</h2>
 
   <table class="table table-bordered">
     <thead>
@@ -8,6 +8,7 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>Role</th>
+        <th></th>
         <th></th>
       </tr>
     </thead>
@@ -20,9 +21,12 @@
           <td><%= staff.email %></td>
           <td><%= staff.role %></td>
           <td><%= link_to "Show", staff_staff_path(staff) %></td>
+          <td><%= link_to "Edit", edit_staff_staff_path(staff) %></td>
         </tr>
       <%end%>
     </tbody>
   </table>
-  <%= link_to "Create New Staff Member", new_staff_staff_path, class:"btn btn-info" %>
+  <div class="container">
+    <%= link_to "Create New Staff Member", new_staff_staff_path, class:"btn btn-info" %>
+  </div>
 </div>

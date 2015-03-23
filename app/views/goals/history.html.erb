@@ -1,6 +1,7 @@
 <div class="container">
-  <h1><%= @user.first_name%> <%= @user.last_name %>'s Goal History</h1>
+  <h1 class="page-header"><%= @user.first_name%> <%= @user.last_name %>'s Goal History</h1>
   <% @cohort_phase_array.each do |week| %>
+
   <table class="table">
     <thead>
       <h4>Week <%=week[:week_number]%>, <%=week[:start]%> - <%= week[:end] %></h4>
