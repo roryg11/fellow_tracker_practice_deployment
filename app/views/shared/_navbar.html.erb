@@ -22,6 +22,7 @@
 
         <% if current_user.role == 'Staff' %>
           <li><%= link_to 'Staff', staff_staffs_path %></li>
+          <li><%= link_to 'Coaches', staff_coaches_path %></li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">

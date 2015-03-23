@@ -1,17 +1,50 @@
-<h1>Show Cohort</h1>
+<div class="container">
+  <h1 class="page-header"><%= @cohort.full_name %></h1>
+  <p>Year: <%= @cohort.year %></p>
+  <p>Season: <%= @cohort.season %></p>
+  <p>Start Date: <%= @cohort.start_date %></p>
+  <table class="table">
+    <thead>
+      <h4>Fellows</h4>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Weekly Progress</th>
+        <th>Overall Progress</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cohort.users.each do |user| %>
+        <% if user.role == "Fellow" %>
+          <tr>
+            <td><%= user.full_name %></td>
+            <td><%= user.email %></td>
+            <td>WEEKLY PROGRESS HERE</td>
+            <td>OVERALL PROGRESS HERE</td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
 
-<p>Year: <%= @cohort.year %></p>
-
-<p>Season: <%= @cohort.season %></p>
-
-<p>Start Date: <%= @cohort.start_date %></p>
-  <h2>Cohort Fellows</h2>
-  <% @cohort.users.each do |user| %>
-    <li>First name: <%= user.first_name %></li>
-    <li>Last name: <%= user.last_name %></li>
-    <li>Email: <%= user.email %></li>
-    <% end %>
-</p>
-<h1>
-  Add users form goes below
-</h1>
+  <table class="table">
+    <thead>
+      <h4>Coaches</h4>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cohort.users.each do |user| %>
+        <% if user.role == "Coach" %>
+          <tr>
+            <td><%= user.full_name %></td>
+            <td><%= user.email %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "Edit Cohort", edit_staff_cohort_path(@cohort), class: "btn btn-primary" %>
+</div>

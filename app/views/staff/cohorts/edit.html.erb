@@ -31,3 +31,14 @@
     </div>
   <%= f.submit "Add Member" %>
 <% end %>
+
+<%= form_for [@cohort, @membership], url: staff_cohort_memberships_path(@cohort) do |f| %>
+  <%= render 'shared/errors', object: @cohort %>
+    <div class='form-group'>
+        <%= f.label :coach, "Add Coach", class: "col-md-1 control-label" %>
+        <div class="col-md-4">
+          <%= f.collection_select :user_id, Coach.all, :id, :full_name, {include_blank: "Select User to Add"}, class: "form-control" %>
+        </div>
+    </div>
+  <%= f.submit "Add Member" %>
+<% end %>
