@@ -19,7 +19,6 @@ feature 'fellow goal tracking' do
     fill_in 'goal_description', with: 'goal description'
     fill_in 'goal_due_date', with: (Date.today + 2)
     click_on 'save-goal-action'
-    save_and_open_page
 
     expect(page).to have_content('goal description')
     expect(page).to have_content("#{Date.today + 2}")
