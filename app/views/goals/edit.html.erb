@@ -1,11 +1,27 @@
 <h1>Edit Goal</h1>
 
 <%= form_for [@user, @goal], html: {class: "form-horizontal"} do |f| %>
-  <%=f.label :description %>
-  <%=f.text_field :description %>
-  <%=f.label :due_date %>
-  <%=f.date_field :due_date %>
-  <%=f.label :completed %>
-  <%=f.check_box :completed %>
-  <%=f.submit "Update" %>
+<div class="form-group">
+  <%=f.label :description, class: "form-label" %>
+  <div class="col-md-3">
+    <%=f.text_field :description, class: "form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <%=f.label :due_date, class: "form-label" %>
+  <div class="col-md-3">
+    <%=f.date_field :due_date, class: "form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <%=f.label :completed, class: "form-label" %>
+  <div class="col-md-3">
+    <%=f.check_box :completed, class: "form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-md-offset-2 col-md-3">
+    <%=f.submit "Update", class: "btn btn-primary" %>
+  </div>
+</div>
 <% end %>

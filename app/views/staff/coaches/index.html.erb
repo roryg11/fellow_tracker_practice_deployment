@@ -1,27 +1,28 @@
-<h2>Coaches List</h2>
+<div class="container">
+  <h2 class="page-header">Coaches List</h2>
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @coaches.each do |coach| %>
+  <table class="table table-bordered">
+    <thead>
       <tr>
-        <td><%= coach.first_name %></td>
-        <td><%= coach.last_name %></td>
-        <td><%= coach.email %></td>
-        <td><%= link_to "Show", staff_coach_path(coach) %></td>
-        <td><%= link_to "Edit", edit_staff_coach_path(coach) %></td>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th></th>
+        <th></th>
       </tr>
-    <%end%>
-  </tbody>
-  
-</table>
-<%= link_to "Create New Coach", new_staff_coach_path, class: "btn btn-info" %>
+    </thead>
+
+    <tbody>
+      <% @coaches.each do |coach| %>
+        <tr>
+          <td><%= coach.first_name %></td>
+          <td><%= coach.last_name %></td>
+          <td><%= coach.email %></td>
+          <td><%= link_to "Show", staff_coach_path(coach) %></td>
+          <td><%= link_to "Edit", edit_staff_coach_path(coach) %></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+    <%= link_to "Create New Coach", new_staff_coach_path, class: "btn btn-info" %>
+</div>
