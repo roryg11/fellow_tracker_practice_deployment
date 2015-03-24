@@ -1,4 +1,28 @@
 <div class="container">
   <h1 class="page-header"> <%= @coach.full_name %> </h1>
   <p>Email: <%= @coach.email %></p>
+
+  <% @coach.cohorts.each do |cohort| %>
+    <table class="table">
+      <thead>
+        <h3><%= cohort.full_name.capitalize %> Cohort</h3>
+        <tr>
+          <th>Fellow name</th>
+          <th>Fellow Email</th>
+          <th>This Week's Progress</th>
+          <th>Overall Progress</th>
+        </tr>
+      </thead>
+      <% cohort.users.each do |user| %>
+      <tr>
+        <% if user.role == "Fellow" %>
+          <td><%= user.full_name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.week_progress %></td>
+          <td><%= user.overall_progress %></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  <% end %>
 </div>
