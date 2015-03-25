@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'date'
 
 describe Coach do
-  xit "gives an array of coaches not assigned to a passed in cohort" do
+  it "gives an array of coaches not assigned to a passed in cohort" do
     coach_1 = Coach.create!(
     first_name: "test",
     last_name: "user",
@@ -20,7 +20,7 @@ describe Coach do
     cohort = Cohort.create!(
     season: "Fall",
     year: "2014",
-    start_date: Date.today
+    start_date: Date.today.beginning_of_week
     )
 
     membership = Membership.create!(
@@ -29,7 +29,6 @@ describe Coach do
     )
 
     expect(cohort.users).to include(coach_1)
-
     expect(Coach.not_members_of(cohort)).to eq([coach_2])
   end
 end

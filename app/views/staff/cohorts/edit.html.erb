@@ -37,7 +37,7 @@
     <div class='form-group'>
         <%= f.label :coach, "Add Coach", class: "col-md-1 control-label" %>
         <div class="col-md-4">
-          <%= f.collection_select :user_id, Coach.not_members(@cohort), :id, :full_name, {include_blank: "Select User to Add"}, class: "form-control" %>
+          <%= f.collection_select :user_id, Coach.not_members_of(@cohort), :id, :full_name, {include_blank: "Select User to Add"}, class: "form-control" %>
         </div>
     </div>
   <%= f.submit "Add Member" %>

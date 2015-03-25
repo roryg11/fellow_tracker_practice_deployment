@@ -6,9 +6,6 @@ class Coach < User
   end
 
   def self.not_members_of(cohort)
-    # Coach
-    #   .joins(:memberships)
-    #   .where.not('users.id IN memberships.cohort_id')
-    #   .tap { |q| puts q.to_sql }
+    Coach.select {|c| !c.cohorts.include?(cohort) }
   end
 end

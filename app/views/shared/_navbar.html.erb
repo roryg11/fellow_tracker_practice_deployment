@@ -15,7 +15,11 @@
           </li>
           <li><%= link_to 'Goals History', goals_history_path %></li>
         <% else %>
-          <li><%= link_to "Dashboard", staff_staff_path(current_user) %></li>
+          <% if current_user.role == "Coach" %>
+            <li><%= link_to "Dashboard", staff_coach_path(current_user) %></li>
+          <% elsif current_user.role == "Staff" %>
+            <li><%= link_to "Dashboard", staff_staff_path(current_user) %></li>
+          <% end %>
           <li><%= link_to 'Cohorts', staff_cohorts_path %></li>
           <li><%= link_to 'Fellows', staff_fellows_path, id: 'show-fellows-action' %></li>
         <% end  %>
