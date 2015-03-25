@@ -1,25 +1,30 @@
-<h1>Goal History</h1>
-
 <div class="container">
-  <% @cohort_phase_array.each do |week|  %>
-    <table class="table">
-      <h4> Week <%= week[:week_number] %> <%= week[:start] %></h4>
-      <thead>
-        <tr>
-          <th>Goal Description</th>
-          <th>Goal Due Date</th>
-          <th>Completed?</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% week[:goals].each do |goal| %>
+  <h1 class="page-header"><%= @fellow.full_name%>'s Goal History</h1>
+  <% if @fellow.memberships.any? %>
+    <% @cohort_phase_array.each do |week| %>
+      <table class="table">
+        <thead>
+          <h4>Week <%=week[:week_number]%>, <%=week[:start]%> - <%= week[:end] %></h4>
           <tr>
-            <td><%= goal.description %>
-            <td><%= goal.due_date %></td>
-            <td><%= goal.completed %></td>
+            <th>Description</th>
+            <th>Due Date</th>
+            <th>Completed</th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end  %>
+        </thead>
+        <tbody>
+          <% week[:goals].each do |goal| %>
+            <tr>
+              <td><%= goal.description %></td>
+              <td><%= goal.due_date %></td>
+              <td><%= goal.completed %></td>
+              <td>CHECKBOX</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+    <% else %>
+      <p><%= @fellow.first_name %>'s Launch Phase has not yet begun</p>
+  <% end %>
 </div>
