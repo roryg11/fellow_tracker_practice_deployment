@@ -1,22 +1,10 @@
 class Cohort < ActiveRecord::Base
-<<<<<<< HEAD
-    validates :season, :year, :start_date, presence: true
-    validate :start_date_is_a_monday
-    has_many :users, through: :memberships
-    has_many :memberships
-    accepts_nested_attributes_for :memberships, :allow_destroy => true
-
-    delegate :fellows, :coaches, :staffs, to: :users
-    def full_name
-        "#{season} #{year}"
-    end
-=======
   validates :season, :year, :start_date, presence: true
   validate :start_date_is_a_monday
   has_many :users, through: :memberships
   has_many :memberships
   accepts_nested_attributes_for :memberships, :allow_destroy => true
->>>>>>> removing unnecessary method
+  delegate :fellows, :coaches, :staffs, to: :users
 
   def full_name
     "#{season} #{year}"
