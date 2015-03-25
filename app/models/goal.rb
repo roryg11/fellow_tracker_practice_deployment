@@ -10,7 +10,7 @@ class Goal < ActiveRecord::Base
   end
 
   def due_date_soon?
-    (due_date - Date.today).to_i <= 2
+    (due_date - Date.today).to_i < 3
   end
 
   def overdue?

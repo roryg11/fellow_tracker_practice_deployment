@@ -4,6 +4,8 @@ class Cohort < ActiveRecord::Base
     has_many :users, through: :memberships
     has_many :memberships
     accepts_nested_attributes_for :memberships, :allow_destroy => true
+
+    delegate :fellows, :coaches, :staffs, to: :users
     def full_name
         "#{season} #{year}"
     end
