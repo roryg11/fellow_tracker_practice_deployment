@@ -40,6 +40,13 @@ class Staff::FellowsController < ApplicationController
     @goals = @fellow.goals
   end
 
+  def destroy
+    @fellow = Fellow.find(params[:id])
+    @fellow.destroy
+    redirect_to staff_fellows_path
+    flash[:notice] = "Fellow successfully deleted"
+  end
+
   private
 
   def fellow_params

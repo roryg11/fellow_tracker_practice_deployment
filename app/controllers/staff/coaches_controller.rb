@@ -39,6 +39,13 @@ class Staff::CoachesController < ApplicationController
     @coach = Coach.find(params[:id])
   end
 
+  def destroy
+    @coach = Coach.find(params[:id])
+    @coach.destroy
+    redirect_to staff_coaches_path
+    flash[:notice] = "Coach successfully deleted"
+  end
+
   private
 
   def coach_params

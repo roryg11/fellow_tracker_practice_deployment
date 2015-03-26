@@ -5,26 +5,26 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Season</th>
-        <th>Year</th>
+        <th>Name</th>
         <th>Start Date</th>
         <th></th>
+        <th></th>
+
       </tr>
     </thead>
     <tbody>
       <% @cohorts.each do |cohort| %>
         <tr>
-          <td><%= cohort.season %></td>
-          <td><%= cohort.year %></td>
+          <td><%= link_to "#{cohort.season} #{cohort.year}", staff_cohort_path(cohort) %></td>
           <td><%= cohort.start_date %></td>
           <!-- <td>
             <%= cohort.users %>
           </td> -->
-          <td><%= link_to "Show", staff_cohort_path(cohort) %></td>
           <td><%= link_to "Edit", edit_staff_cohort_path(cohort) %></td>
+          <td><%= link_to 'Delete', staff_cohort_path(cohort), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
         </tr>
       <%end%>
     </tbody>
   </table>
-  <%= link_to "Create New Cohort", new_staff_cohort_path, class: "btn btn-info" %>
+  <%= link_to "Create New Cohort", new_staff_cohort_path, id:"formButton", class: "btn btn-info" %>
 </div>

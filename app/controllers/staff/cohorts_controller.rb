@@ -40,6 +40,13 @@ class Staff::CohortsController < ApplicationController
     @cohort = Cohort.find(params[:id])
   end
 
+  def destroy
+    @cohort = Cohort.find(params[:id])
+    @cohort.destroy
+    redirect_to staff_cohorts_path
+    flash[:notice] = "Cohort successfully deleted"
+  end
+
   private
 
   def cohort_params
