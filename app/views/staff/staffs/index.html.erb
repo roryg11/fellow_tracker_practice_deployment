@@ -4,11 +4,9 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
+        <th>Name</th>
         <th>Email</th>
         <th>Role</th>
-        <th></th>
         <th></th>
       </tr>
     </thead>
@@ -16,17 +14,13 @@
     <tbody>
       <% @staff.each do |staff| %>
         <tr>
-          <td><%= staff.first_name %></td>
-          <td><%= staff.last_name %></td>
+          <td><%= link_to "#{staff.first_name} #{staff.last_name}", staff_staff_path(staff) %></td>
           <td><%= staff.email %></td>
           <td><%= staff.role %></td>
-          <td><%= link_to "Show", staff_staff_path(staff) %></td>
           <td><%= link_to "Edit", edit_staff_staff_path(staff) %></td>
         </tr>
       <%end%>
     </tbody>
   </table>
-  <div class="container">
-    <%= link_to "Create New Staff Member", new_staff_staff_path, class:"btn btn-info" %>
-  </div>
+    <%= link_to "Create New Staff Member", new_staff_staff_path, id: "formButton", class:"btn btn-info" %>
 </div>
