@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resources :fellows do
       resources :goals
     end
-    resources :coaches
+    resources :coaches do
+      resources :mentorships
+    end 
     resources :staffs
     resources :cohorts do
       resources :memberships

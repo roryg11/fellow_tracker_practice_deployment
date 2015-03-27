@@ -22,6 +22,7 @@ class Staff::CohortsController < ApplicationController
   def edit
     @cohort = Cohort.find(params[:id])
     @membership = @cohort.memberships.new
+    print params
   end
 
   def update

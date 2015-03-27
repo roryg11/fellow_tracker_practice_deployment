@@ -1,5 +1,6 @@
 class Fellow < User
   has_one :mentorship
+  has_one :coach, through: :mentorship
 
   def full_name
     "#{first_name} #{last_name}"

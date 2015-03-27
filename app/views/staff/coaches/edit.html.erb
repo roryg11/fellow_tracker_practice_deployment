@@ -26,10 +26,26 @@
     </div>
   </div>
   <div class="form-group">
-    <div class="col-md-offset-2 col-md-3">
-      <%= f.submit "Update Coach", id:"submit-user-button", class: "btn btn-primary" %>
+    <div class="col-md-offset-2">
+      <%= f.submit "Update Coach", id:"submit-user-button", class: "btn btn-primary col-md-3" %>
     </div>
   </div>
   <%end%>
+</div>
 
+<div class="container">
+    <%= form_for [@coach, @mentorship], url: staff_coach_mentorships_path(@coach), html: {class: "form-horizontal"} do |f| %>
+    <%= render 'shared/errors', object: @mentorship %>
+    <div class='form-group'>
+        <%= f.label :fellow, "Add Mentee", class: "col-md-2 form-label" %>
+        <div class="col-md-3">
+          <%= f.collection_select :fellow_id, Fellow.all, :id, :full_name, {include_blank: "Select User to Add"}, class: "form-control" %>
+        </div>
+    </div>
+    <div class="form-group">
+    <div class="col-md-offset-2">
+      <%= f.submit "Add Mentorship", id:"submit-user-button", class: "btn btn-primary col-md-3" %>
+    </div>
+  </div>
+  <%end%>
 </div>

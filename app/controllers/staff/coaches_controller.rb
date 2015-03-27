@@ -21,6 +21,8 @@ class Staff::CoachesController < ApplicationController
 
   def edit
     @coach = Coach.find(params[:id])
+    @mentorship = @coach.mentorships.new
+    p params
   end
 
   def update
@@ -50,5 +52,11 @@ class Staff::CoachesController < ApplicationController
 
   def coach_params
     params.require(:coach).permit(:first_name, :last_name, :email, :role)
+  end
+  def mentorship_params
+    params.require(:mentorship).permit(
+      :fellow_id,
+      :coach_id,
+    )
   end
 end
