@@ -6,12 +6,13 @@
       <h4>Completion Percentage:
         <% if @goals.where(completed: true) && @goals.length > 0 %>
           <%= (((@goals.where(completed: true).length).to_f / (@goals.length).to_f) * 100).floor%> %
-        <% end %> 
+        <% end %>
       </h4>
       <tr>
         <th>Goal Description</th>
         <th>Goal Due Date</th>
         <th>Completed?</th>
+        <th></th>
         <th></th>
         <th></th>
       </tr>
@@ -35,7 +36,11 @@
               <%= link_to 'Complete', goal_path(goal, goal: {completed: true}), class: 'btn btn-primary complete-goal-action', method: :put %>
             <% end %>
           </td>
-          <td></td>
+          <% if goal.created_within_two_hours? %>
+            <td><%= link_to "Edit", edit_goal_path(goal) %></td>
+          <% else %>
+            <td></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

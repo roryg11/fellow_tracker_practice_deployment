@@ -22,6 +22,14 @@ class Fellow < User
       (((self.goals.where(completed: true).length).to_f/(self.goals.length).to_f) * 100).floor
     end
   end
+
+  def this_weeks_goals
+    monday = Date.today.beginning_of_week
+    sunday = monday + 6
+    if self.goals.length > 0
+      self.goals.where(due_date: monday..sunday)
+    end
+  end
 end
 
 # fellow has one primary_coach (through mentorship)

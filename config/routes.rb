@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'goals' => 'goals#goals'
   get 'goals/history' => 'goals#history'
+  
   resources :goals, :except => [:index, :show]
   namespace :staff do
     resources :fellows do

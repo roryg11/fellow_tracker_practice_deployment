@@ -1,33 +1,35 @@
-<h1>Edit Goal</h1>
+<div class="container">
+  <h1 class="page-header">Edit Goal</h1>
 
 <%= form_for [@user, @goal], url: goal_path(@goal), html: {class: "form-horizontal"} do |f| %>
-<div class="form-group">
-  <%=f.label :description, class: "form-label" %>
-  <div class="col-md-3">
-    <%=f.text_field :description, class: "form-control" %>
+  <div class="form-group">
+    <%=f.label :description, class: "control-label col-md-2" %>
+    <div class="col-md-3">
+      <%=f.text_field :description, class: "form-control" %>
+    </div>
   </div>
-</div>
-<div class="form-group">
-  <%=f.label :due_date, class: "form-label" %>
-  <div class="col-md-3">
-    <%=f.date_field :due_date, class: "form-control" %>
+  <div class="form-group">
+    <%=f.label :due_date, class: "control-label col-md-2" %>
+    <div class="col-md-3">
+      <%=f.date_field :due_date, class: "form-control" %>
+    </div>
   </div>
-</div>
-<div class="form-group">
-  <%=f.label :completed, class: "form-label" %>
-  <div class="col-md-3">
-    <%=f.check_box :completed, class: "form-control" %>
+  <div class='form-group'>
+   <%=f.label :notes, class: "col-md-2 control-label" %>
+     <div class="col-md-3">
+      <%=f.text_area :notes, class: "form-control" %>
+    </div>
   </div>
-</div>
-<div class='form-group'>
- <%=f.label :notes, class: "col-md-1 control-label" %>
- <div class="col-md-4">
-  <%=f.text_area :notes, class: "form-control" %>
-</div>
-</div>
-<div class="form-group">
-  <div class="col-md-offset-2 col-md-3">
-    <%=f.submit "Update", class: "btn btn-primary" %>
+  <div class="form-group">
+    <%=f.label :completed, class: "control-label col-md-2" %>
+    <div class="col-md-3">
+      <%=f.check_box :completed, class: "form-control" %>
+    </div>
   </div>
-</div>
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-3">
+      <%=f.submit "Update", class: "btn btn-primary" %>
+    </div>
+  </div>
 <% end %>
+</div>

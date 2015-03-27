@@ -16,4 +16,8 @@ class Goal < ActiveRecord::Base
   def overdue?
     (due_date - Date.today).to_i <= 0
   end
+
+  def created_within_two_hours?
+    created_at - DateTime.now < 2.hours
+  end
 end
