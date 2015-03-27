@@ -15,6 +15,12 @@
                 </div>
             </div>
             <div class='form-group'>
+               <%=f.label :notes, class: "col-md-1 control-label" %>
+                <div class="col-md-4">
+                    <%=f.text_area :notes, class: "form-control" %>
+                </div>
+            </div>
+            <div class='form-group'>
                 <%=f.submit id: "save-goal-action", class:"btn btn-info" %>
             </div>
     <% end %>

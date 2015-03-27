@@ -65,7 +65,7 @@ class Staff::GoalsController < ApplicationController
 
   def goal_params
     params.require(:goal).permit(
-    :description, :due_date, :completed, :user_id,
+    :description, :due_date, :completed, :user_id, :notes
     )
   end
 
