@@ -48,9 +48,11 @@ class GoalsController < ApplicationController
   def create
     @goal = @user.goals.create(goal_params)
     if @goal.save
+      flash[:notice] = "Goal successfully created"
       redirect_to goals_path
     else
       render :new
+      flash[:alert] = "Goal could not be created"
     end
   end
 
@@ -65,14 +67,21 @@ class GoalsController < ApplicationController
       redirect_to goals_path
     else
       render :edit
+      flash[:alert] = "Goal could not be saved"
     end
   end
 
   def destroy
     @goal = @user.goals.find(params[:id])
-    @goal.destroy
-    redirect_to goals_path
-    flash[:alert] = "Goal has been deleted."
+    @coach = @user.mentorship.coach
+    if @goal.destroy
+      GoalMailer.delete_email(@coach, @goal, @user).deliver
+      redirect_to goals_path
+      flash[:alert] = "Goal has been deleted."
+    else
+      render :edit
+      flash[:alert] = "Goal could not be deleted."
+    end
   end
 
   private

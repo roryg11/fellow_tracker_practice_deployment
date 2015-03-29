@@ -8,6 +8,7 @@ class Staff::MentorshipsController < ApplicationController
       redirect_to staff_coach_path(@coach)
       flash[:notice] = "Mentorship successfully added"
     else
+      redirect_to edit_staff_coach_path(@coach)
       flash[:alert] = "Mentorship could not be added."
     end
   end

@@ -23,13 +23,15 @@
   <div class="form-group">
     <%=f.label :completed, class: "control-label col-md-2" %>
     <div class="col-md-3">
-      <%=f.check_box :completed, class: "form-control" %>
+    <%=f.check_box :completed, class: "checkbox" %>
     </div>
   </div>
   <div class="form-group">
-    <div class="col-md-offset-2 col-md-3">
+    <div class="col-md-offset-2">
       <%=f.submit "Update", class: "btn btn-primary" %>
-    </div>
+        <%= link_to "Delete goal", goal_path(@goal), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+      </div>
+  </div>
   </div>
 <% end %>
 </div>
