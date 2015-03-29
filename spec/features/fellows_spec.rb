@@ -1,6 +1,7 @@
 require 'rails_helper'
 require 'date'
-
+### this will fail on weekends because goals is shown for the week so this 
+## test creates goal for next week
 feature 'fellow goal tracking' do
   scenario 'a fellow can create a goal' do
     Fellow.create!(
@@ -17,11 +18,10 @@ feature 'fellow goal tracking' do
 
     click_on 'new-goal-action'
     fill_in 'goal_description', with: 'goal description'
-    fill_in 'goal_due_date', with: (Date.today + 2)
+    fill_in 'goal_due_date', with: (Date.today)
     click_on 'save-goal-action'
-
     expect(page).to have_content('goal description')
-    expect(page).to have_content("#{Date.today + 2}")
+    expect(page).to have_content("#{Date.today}")
   end
   scenario 'a fellow can mark a goal as completed' do
     fellow = Fellow.create!(
