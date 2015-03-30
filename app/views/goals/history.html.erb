@@ -17,8 +17,20 @@
         <tr>
           <td><%= goal.description %></td>
           <td><%= goal.due_date %></td>
-          <td><%= goal.completed %></td>
-          <td>CHECKBOX</td>
+          <td>
+            <% if goal.completed %>
+              <span class="glyphicon glyphicon-ok done"></span>
+            <% elsif goal.overdue? %>
+                <span class="glyphicon glyphicon-exclamation-sign overdue"></span>
+            <% elsif goal.due_date_soon? %>
+              <span class="glyphicon glyphicon-exclamation-sign due-soon"></span>
+            <% end %>
+          </td>
+          <td>
+            <% unless goal.completed %>
+              <%= link_to 'Complete', goal_path(goal, goal: {completed: true}), class: 'btn btn-primary complete-goal-action', method: :put %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

@@ -57,4 +57,7 @@ describe Goal do
 
     expect(goal.created_within_two_hours?).to eq(false)
   end
+
+  it 'can be completed after 2 hours, but cannot be edited'
+  it 'validates that a goal can be completed on update, but not edited'
 end

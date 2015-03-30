@@ -61,6 +61,7 @@ class GoalsController < ApplicationController
   end
 
   def update
+    p params
     @goal = @user.goals.find(params[:id])
     @goal.update(goal_params)
     if @goal.save
