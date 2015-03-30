@@ -21,7 +21,7 @@
       <% @goals.each do |goal|  %>
         <tr>
           <td><%= goal.description %>
-          <td><%= goal.due_date %></td>
+          <td><%= goal.format_due_date %></td>
           <td>
             <% if goal.completed %>
               <span class="glyphicon glyphicon-ok done"></span>

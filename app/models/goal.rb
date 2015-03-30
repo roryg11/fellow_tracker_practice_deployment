@@ -18,6 +18,10 @@ class Goal < ActiveRecord::Base
   end
 
   def created_within_two_hours?
-    created_at - DateTime.now < 2.hours
+    (created_at - DateTime.now).abs < 2.hours
+  end
+
+  def format_due_date
+    due_date.strftime("%B %d, %Y")
   end
 end

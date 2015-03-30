@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Goal do
-  xit "indicates when goal due date is within 2 days" do
+  it "indicates when goal due date is within 2 days" do
     user = User.create!(
       first_name: "rory",
       last_name: "grant",
