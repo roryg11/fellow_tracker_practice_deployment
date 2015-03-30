@@ -32,6 +32,8 @@
       <tr>
         <th>Name</th>
         <th>Email</th>
+        <th>Associated Fellows Week Progress</th>
+        <th>Associated Fellows Overall Progress</th>
       </tr>
     </thead>
     <tbody>
@@ -39,6 +41,8 @@
         <tr>
           <td><%= coach.full_name %></td>
           <td><%= coach.email %></td>
+          <td><%= coach.weekly_fellow_progress %>%</td>
+          <td><%= coach.overall_fellow_progress %>%</td>
         </tr>
       <% end %>
     </tbody>
