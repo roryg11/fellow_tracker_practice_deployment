@@ -6,6 +6,8 @@
       <tr>
         <th>Name</th>
         <th>Email</th>
+        <th>Fellows Weekly Progress</th>
+        <th>Fellows Overall Progress</th>
         <th></th>
         <th></th>
       </tr>
@@ -16,6 +18,8 @@
         <tr>
           <td><%= link_to "#{coach.first_name} #{coach.last_name}", staff_coach_path(coach) %></td>
           <td><%= coach.email %></td>
+          <td><%= coach.weekly_fellow_progress %>%</td>
+          <td><%= coach.overall_fellow_progress %>%</td>
           <td><%= link_to "Edit", edit_staff_coach_path(coach) %></td>
           <td><%= link_to 'Delete', staff_coach_path(coach), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
         </tr>
