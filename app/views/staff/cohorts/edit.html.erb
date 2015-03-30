@@ -1,44 +1,60 @@
-<%= form_for @cohort, url: staff_cohort_path, html: {method: "patch"} do |f| %>
-  <%= render 'shared/errors', object: @cohort %>
-  <div class='form-group'>
-  <%= f.label :start_date, class: "col-md-1 control-label" %>
-    <div class="col-md-4">
-      <%= f.date_field :start_date, class: "form-control" %>
-    </div>
-  </div>
-  <div class='form-group'>
-  <%= f.label :season, class: "col-md-1 control-label" %>
-    <div class="col-md-4">
-      <%= f.text_field :season, class: "form-control" %>
-    </div>
-  </div>
-  <div class='form-group'>
-  <%= f.label :year, class: "col-md-1 control-label" %>
-    <div class="col-md-4">
-        <%= f.text_field :year, class: "form-control" %>
-    </div>
-  </div>
-  <%= f.submit "Update Cohort" %>
-<% end %>
-
-<%= form_for [@cohort, @membership], url: staff_cohort_memberships_path(@cohort), html: {class: "form-horizontal"} do |f| %>
-  <%= render 'shared/errors', object: @cohort %>
+<div class="container">
+  <h3 class="page-header">Edit Cohort</h3>
+  <%= form_for @cohort, url: staff_cohort_path, html: {class: "form-horizontal", method: "patch"} do |f| %>
+    <%= render 'shared/errors', object: @cohort %>
     <div class='form-group'>
-        <%= f.label :fellow, "Add Fellow", class: "col-md-1 control-label" %>
-        <div class="col-md-4">
-          <%= f.collection_select :user_id, Fellow.avail_fellows, :id, :full_name, {include_blank: "Select User to Add"}, class: "form-control" %>
-        </div>
+    <%= f.label :start_date, class: "col-md-2 control-label" %>
+      <div class="col-md-4">
+        <%= f.date_field :start_date, class: "form-control" %>
+      </div>
     </div>
-  <%= f.submit "Add Member" %>
-<% end %>
-
-<%= form_for [@cohort, @membership], url: staff_cohort_memberships_path(@cohort), html: {class: "form-horizontal"} do |f| %>
-  <%= render 'shared/errors', object: @cohort %>
     <div class='form-group'>
-        <%= f.label :coach, "Add Coach", class: "col-md-1 control-label" %>
-        <div class="col-md-4">
-          <%= f.collection_select :user_id, Coach.not_members_of(@cohort), :id, :full_name, {include_blank: "Select User to Add"}, class: "form-control" %>
-        </div>
+    <%= f.label :season, class: "col-md-2 control-label" %>
+      <div class="col-md-4">
+        <%= f.text_field :season, class: "form-control" %>
+      </div>
     </div>
-  <%= f.submit "Add Member" %>
-<% end %>
+    <div class='form-group'>
+    <%= f.label :year, class: "col-md-2 control-label" %>
+      <div class="col-md-4">
+          <%= f.text_field :year, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-3">
+        <%= f.submit "Update Cohort", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= form_for [@cohort, @membership], url: staff_cohort_memberships_path(@cohort), html: {class: "form-horizontal"} do |f| %>
+    <%= render 'shared/errors', object: @cohort %>
+      <div class='form-group'>
+          <%= f.label :fellow, "Add Fellow", class: "col-md-2 control-label" %>
+          <div class="col-md-4">
+            <%= f.collection_select :user_id, Fellow.avail_fellows, :id, :full_name, {include_blank: "Select User to Add"}, class: "form-control" %>
+          </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-3">
+          <%= f.submit "Add Member", class: "btn btn-primary" %>
+        </div>
+      </div>
+  <% end %>
+
+  <%= form_for [@cohort, @membership], url: staff_cohort_memberships_path(@cohort), html: {class: "form-horizontal"} do |f| %>
+    <%= render 'shared/errors', object: @cohort %>
+      <div class='form-group'>
+          <%= f.label :coach, "Add Coach", class: "col-md-2 control-label" %>
+          <div class="col-md-4">
+            <%= f.collection_select :user_id, Coach.not_members_of(@cohort), :id, :full_name, {include_blank: "Select User to Add"}, class: "form-control" %>
+          </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-3">
+          <%= f.submit "Add Member", class: "btn btn-primary" %>
+        </div>
+      </div>
+  <% end %>
+
+</div>
