@@ -1,21 +1,33 @@
-<h1>Add New Cohort</h1>
-
 <div class="container">
-  <%= form_for @cohort, url: staff_cohorts_path do |f| %>
-
+  <h1 class="page-header">Add New Cohort</h1>
+  <%= form_for @cohort, url: staff_cohorts_path, html: {class: "form-horizontal"} do |f| %>
   <%= render 'shared/errors', object: @cohort %>
 
-  <%= f.label :start_date %>
-  <%= f.date_field :start_date %>
+  <div class="form-group">
+    <%= f.label :start_date, class: "control-label col-md-2" %>
+    <div class="col-md-3">
+      <%= f.date_field :start_date, class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :season %>
-  <%= f.text_field :season %>
+  <div class="form-group">
+    <%= f.label :season, class: "control-label col-md-2" %>
+    <div class="col-md-3">
+      <%= f.text_field :season, class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :year %>
-  <%= f.text_field :year %>
+  <div class="form-group">
+    <%= f.label :year, class: "control-label col-md-2" %>
+    <div class="col-md-3">
+      <%= f.text_field :year, class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.submit "Create New Cohort" %>
-
+  <div class="form-group">
+    <div class="col-md-3 col-md-offset-2">
+      <%= f.submit "Create New Cohort", class: "btn btn-primary" %>
+    </div>
+  </div>
   <%end%>
-
 </div>
