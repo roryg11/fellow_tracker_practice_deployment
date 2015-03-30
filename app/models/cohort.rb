@@ -11,7 +11,7 @@ class Cohort < ActiveRecord::Base
   end
 
   def first_monday
-    launch_phase = start_date + voyage_phase
+    launch_phase = start_date + phase_length
     monday = launch_phase.at_beginning_of_week
   end
 
@@ -19,11 +19,40 @@ class Cohort < ActiveRecord::Base
     errors.add(:start_date, "must be a monday") if !start_date.monday?
   end
 
-  def voyage_phase
+  def phase_length
     7 * 12
   end
 
   def weeks_elapsed
-    (((Date.today - (start_date + voyage_phase)).to_i)/7.0).ceil
+    (((Date.today - (start_date + phase_length)).to_i)/7.0).ceil
+  end
+
+  def overall_progress
+    fellow_total = 0
+    number_of_fellows = fellows.length
+    overall_average = 0
+    fellows.each do |fellow|
+      fellow_total += fellow.overall_progress
     end
+    if number_of_fellows > 0
+      overall_average = fellow_total/number_of_fellows
+    end
+    overall_average
+  end
+
+  def current_phase
+    if Date.today < start_date + phase_length
+      "Voyage Phase"
+    elsif Date.today < start_date + (phase_length * 2)
+      "Launch Phase"
+    elsif Date.today < start_date + (phase_length *3)
+      "Internship"
+    elsif Date.today < start_date + (phase_length * 4)
+      "Project"
+    elsif Date.today < start_date
+      "Not yet started"
+    else
+      "Cohort has graduated"
+    end
+  end
 end

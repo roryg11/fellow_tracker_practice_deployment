@@ -1,6 +1,30 @@
 <div class="container">
-  <h1 class="page-header">Show Staff</h1>
-  <p>First Name:<%= @staff.first_name %></p>
-  <p>Last Name:<%= @staff.last_name %></p>
-  <p>Email: <%= @staff.email %></p>
+  <h1 class="page-header">All Cohorts and Aggregate Progress</h1>
+  <% @cohorts.each do |cohort| %>
+  <table class="table">
+    <h4><%= cohort.full_name.capitalize %></h4>
+    <p><strong>Start Date:</strong> <%= cohort.start_date %></p>
+    <p><strong>Current Phase:</strong> <%= cohort.current_phase %></p>
+    <p><strong>Overall Fellow Progress:</strong> <%= cohort.overall_progress %>%</p>
+    <p><strong>Coaches:</strong> <% cohort.coaches.each {|coach| "#{coach.full_name}"} %></p>
+    <thead>
+      <tr>
+        <th>Fellow Name</th>
+        <th>Email</th>
+        <th>This Week's Progress</th>
+        <th>Overall Progress</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% cohort.fellows.each do |fellow| %>
+        <tr>
+          <td><%= fellow.full_name %></td>
+          <td><%= fellow.email %></td>
+          <td><%= fellow.week_progress %>%</td>
+          <td><%= fellow.overall_progress %>%</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
 </div>

@@ -36,6 +36,7 @@ class Staff::StaffsController < ApplicationController
 
   def show
     @staff = Staff.find(params[:id])
+    @cohorts = Cohort.all
   end
 
   private
