@@ -14,12 +14,16 @@ class Fellow < User
     sunday = monday + 6
     if (self.goals.length) > 0
       (((self.goals.where(completed: true, due_date: monday..sunday ).length).to_f/(self.goals.length).to_f) * 100).floor
+    else
+      0
     end
   end
 
   def overall_progress
     if self.goals.length > 0
       (((self.goals.where(completed: true).length).to_f/(self.goals.length).to_f) * 100).floor
+    else
+      0
     end
   end
 
