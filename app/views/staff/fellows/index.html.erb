@@ -18,8 +18,8 @@
         <tr>
           <td><%= link_to "#{fellow.first_name} #{fellow.last_name}", staff_fellow_path(fellow) %></td>
           <td><%= fellow.email %></td>
-          <td><%= fellow.week_progress %> %</td>
-          <td><%= fellow.overall_progress %> %</td>
+          <td><%= fellow.week_progress %>%</td>
+          <td><%= fellow.overall_progress %>%</td>
           <td><%= link_to "Edit", edit_staff_fellow_path(fellow) %></td>
           <td><%= link_to 'Delete', staff_fellow_path(fellow), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
         </tr>
