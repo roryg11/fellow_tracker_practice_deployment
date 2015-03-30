@@ -1,8 +1,9 @@
 <div class="container">
-  <h1 class="page-header"><%= @cohort.full_name %></h1>
+  <h1 class="page-header"><%= @cohort.full_name.capitalize %></h1>
   <p>Year: <%= @cohort.year %></p>
   <p>Season: <%= @cohort.season %></p>
   <p>Start Date: <%= @cohort.start_date %></p>
+  <p>Overall Progress: <%= @cohort.overall_progress %>%</p>
   <table class="table">
     <thead>
       <h4>Fellows</h4>
@@ -14,15 +15,13 @@
       </tr>
     </thead>
     <tbody>
-      <% @cohort.users.each do |user| %>
-        <% if user.role == "Fellow" %>
-          <tr>
-            <td><%= user.full_name %></td>
-            <td><%= user.email %></td>
-            <td>WEEKLY PROGRESS HERE</td>
-            <td>OVERALL PROGRESS HERE</td>
-          </tr>
-        <% end %>
+      <% @cohort.fellows.each do |fellow| %>
+        <tr>
+          <td><%= fellow.full_name %></td>
+          <td><%= fellow.email %></td>
+          <td><%= fellow.week_progress %>%</td>
+          <td><%= fellow.overall_progress %>%</td>
+        </tr>
       <% end %>
     </tbody>
   </table>
@@ -36,13 +35,11 @@
       </tr>
     </thead>
     <tbody>
-      <% @cohort.users.each do |user| %>
-        <% if user.role == "Coach" %>
-          <tr>
-            <td><%= user.full_name %></td>
-            <td><%= user.email %></td>
-          </tr>
-        <% end %>
+      <% @cohort.coaches.each do |coach| %>
+        <tr>
+          <td><%= coach.full_name %></td>
+          <td><%= coach.email %></td>
+        </tr>
       <% end %>
     </tbody>
   </table>
