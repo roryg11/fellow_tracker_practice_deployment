@@ -1,6 +1,5 @@
 <div class="container">
-  <h1 class="page-header"> <%= @coach.full_name %> </h1>
-  <p>Email: <%= @coach.email %></p>
+  <h1 class="page-header"> <%= @coach.full_name %>'s Cohorts</h1>
 
   <% @coach.cohorts.each do |cohort| %>
     <table class="table">
@@ -24,8 +23,8 @@
         <% if user.role == "Fellow" %>
           <td><%= user.full_name %></td>
           <td><%= user.email %></td>
-          <td><%= user.week_progress %></td>
-          <td><%= user.overall_progress %></td>
+          <td><%= user.week_progress %>% </td>
+          <td><%= user.overall_progress %>%</td>
           <td>
             <ul>
               <% user.this_weeks_goals.each do |goal| %>
