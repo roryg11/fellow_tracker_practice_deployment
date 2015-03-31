@@ -15,3 +15,11 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+//= require pikaday/pikaday
+
+$(function() {
+
+
+  var picker = new Pikaday({ field: $('#goal_due_date')[0] });
+
+});
