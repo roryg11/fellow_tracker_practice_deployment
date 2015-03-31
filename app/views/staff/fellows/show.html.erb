@@ -1,38 +1,7 @@
 <div class="container">
-  <h1 class="page-header"><%= @fellow.full_name %></h1>
-  <p>Email: <%= @fellow.email %></p>
-  <%= link_to "Goals History", staff_fellow_goals_path(@fellow) %>
-
-  <div class="container-fluid">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Description</th>
-          <th>Due Date</th>
-          <th>Completed?</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @goals.each do |goal| %>
-          <tr>
-            <td><%= goal.description %></td>
-            <td><%= goal.due_date %></td>
-            <td>
-              <% if goal.completed == false  %>
-                <%= link_to "Complete", staff_fellow_goal_path(@fellow, goal, "goal[completed]" => true), method: :put %>
-              <% else %>
-                Done
-              <% end %>
-            </td>
-            <td><%= link_to "Edit goal", edit_staff_fellow_goal_path(@fellow, goal) %></td>
-            <td><%= link_to "Delete goal", staff_fellow_goal_path(@fellow,goal), method: :delete, data: {confirm: "Are you sure?"} %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <%= link_to "New Goal", new_staff_fellow_goal_path(@fellow), id: 'new-goal-action', class: "btn btn-primary" %>
-</div>
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="#">Goals</a></li>
+    <li role="presentation">  <%= link_to "Goals History", staff_fellow_goals_path(@fellow) %></li>
+  </ul>
+  <%= render partial: '/shared/goals', object: @fellow, as: :user%>
+ </div>

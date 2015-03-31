@@ -1,0 +1,49 @@
+<div class="container">
+  <h1> <%= user.first_name %>'s Goals </h1>
+  <table class="table">
+    <thead>
+    <h2>Week of <%= Date.today.at_beginning_of_week.strftime("%B %d %Y") %> - <%= (Date.today.at_end_of_week).strftime("%B %d %Y") %> <h2>
+      <h4>Completion Percentage:
+        <% if user.goals.where(completed: true) && user.goals.length > 0 %>
+          <%= (((user.goals.where(completed: true).length).to_f / (user.goals.length).to_f) * 100).floor%> %
+        <% end %>
+      </h4>
+      <tr>
+        <th>Goal Description</th>
+        <th>Goal Due Date</th>
+        <th>Completed?</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% user.goals.each do |goal|  %>
+      <tr>
+        <td><%= goal.description %>
+        <td><%= goal.format_due_date %></td>
+        <td>
+          <% if goal.completed %>
+            <span class="glyphicon glyphicon-ok done"></span>
+          <% elsif goal.overdue? %>
+            <span class="glyphicon glyphicon-exclamation-sign overdue"></span>
+          <% elsif goal.due_date_soon? %>
+            <span class="glyphicon glyphicon-exclamation-sign due-soon"></span>
+          <% end %>
+        </td>
+        <td>
+          <% unless goal.completed %>
+            <%= link_to 'Complete', goal_path(goal, goal: {completed: true}), class: 'btn btn-primary complete-goal-action', method: :put %>
+          <% end %>
+        </td>
+        <% if goal.created_within_two_hours? %>
+          <td><%= link_to "Edit", edit_goal_path(goal) %></td>
+        <% else %>
+          <td></td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= link_to "New Goal", new_goal_path, id: "new-goal-action", class: "btn btn-primary" %>
+</div>

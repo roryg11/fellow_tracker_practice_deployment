@@ -1,30 +1,7 @@
 <div class="container">
-  <h1 class="page-header"><%= @fellow.full_name%>'s Goal History</h1>
-  <% if @fellow.memberships.any? %>
-    <% @cohort_phase_array.each do |week| %>
-      <table class="table">
-        <thead>
-          <h4>Week <%=week[:week_number]%>, <%=week[:start]%> - <%= week[:end] %></h4>
-          <tr>
-            <th>Description</th>
-            <th>Due Date</th>
-            <th>Completed</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% week[:goals].each do |goal| %>
-            <tr>
-              <td><%= goal.description %></td>
-              <td><%= goal.due_date %></td>
-              <td><%= goal.completed %></td>
-              <td>CHECKBOX</td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% end %>
-    <% else %>
-      <p><%= @fellow.first_name %>'s Launch Phase has not yet begun</p>
-  <% end %>
+  <ul class="nav nav-tabs">
+    <li role="presentation" ><%= link_to "Goals", staff_fellow_path(@fellow) %></li>
+    <li role="presentation" class="active"><a href="#">Goals History</a></li>
+  </ul>
+  <%= render partial: '/shared/history', object: @fellow, as: :user%>
 </div>
