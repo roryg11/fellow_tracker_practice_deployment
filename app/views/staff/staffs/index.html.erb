@@ -6,7 +6,6 @@
       <tr>
         <th>Name</th>
         <th>Email</th>
-        <th>Role</th>
         <th></th>
       </tr>
     </thead>
@@ -16,7 +15,6 @@
         <tr>
           <td><%= link_to "#{staff.first_name} #{staff.last_name}", staff_staff_path(staff) %></td>
           <td><%= staff.email %></td>
-          <td><%= staff.role %></td>
           <td><%= link_to "Edit", edit_staff_staff_path(staff) %></td>
         </tr>
       <%end%>
