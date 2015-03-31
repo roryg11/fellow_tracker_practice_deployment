@@ -3,6 +3,10 @@ class Goal < ActiveRecord::Base
   validate :due_date_cannot_be_in_the_past, on: :create
   belongs_to :user
 
+  def self.for_week(cohort, week_number)
+    where(due_date: cohort.week_start_date(week_number)..cohort.week_end_date(week_number))
+  end
+
   def due_date_cannot_be_in_the_past
     if due_date.present? && due_date < Date.today
       errors.add(:due_date, "can't be in the past")

@@ -2,19 +2,18 @@ require 'rails_helper'
 
 feature "Users" do
   scenario "Staff can create a fellow" do
-    User.create!(
+    Staff.create!(
       first_name: "Rory",
       last_name: "Grant",
       email: "rory.c.grant@gmail.com",
       password: "roryrocks",
-      role: "Staff"
     )
 
     Cohort.create!(
       season: "Fall",
       year: "2015",
       start_date: Date.new(2015, 04, 20)
-      )
+    )
 
     visit root_path
     click_on "Login"

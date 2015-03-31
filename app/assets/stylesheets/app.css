@@ -22,3 +22,8 @@
 #formButton {
   margin-top: 1em;
 }
+
+.progress-header {
+  font-weight: bold;
+  display: inline-block;
+}

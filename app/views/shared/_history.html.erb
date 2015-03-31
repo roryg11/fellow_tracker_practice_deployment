@@ -1,34 +1,37 @@
 <div class="container">
-  <h1 class="page-header"><%= user.first_name%> <%= user.last_name %>'s Goal History</h1>
-  <p><strong>Cumulative Progress:</strong> <%= user.cumulative_progress %> %</p>
-  <% user.cohort_week_array.each do |week| %>
-  <table class="table">
-    <thead>
-      <h4>Week <%=week[:week_number]%>, <%=week[:start]%> - <%= week[:end] %></h4>
-      <p><strong>Week Progress Percentage: <%= week[:progress]%>%</strong></p>
-      <tr>
-        <th>Description</th>
-        <th>Due Date</th>
-        <th>Completed</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% week[:goals].each do |goal| %>
+  <h1 class="page-header">
+    <%= @fellow.full_name %>'s Goal History
+  </h1>
+
+  <div>
+    <p class='progress-header'>Cumulative Progress</p>: <%= @fellow.cumulative_progress %>%
+  </div>
+
+  <% cohort = @fellow.cohort %>
+  <% 1.upto(cohort.weeks_from_start) do |week_number| %>
+    <h4>
+      Week <%= week_number %>, <%= cohort.week_dates(week_number) %>
+    </h4>
+    <h5>
+      Week Progress: <%= @fellow.week_progress(week_number) %>%
+    </h5>
+
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Due Date</th>
+          <th>Completed</th>
+        </tr>
+      </thead>
+
+      <% @fellow.goals.for_week(cohort, week_number).each do |goal| %>
         <tr>
           <td><%= goal.description %></td>
-          <td><%= goal.due_date %></td>
-          <td>
-            <% if goal.completed %>
-              <span class="glyphicon glyphicon-ok done"></span>
-            <% elsif goal.overdue? %>
-                <span class="glyphicon glyphicon-exclamation-sign overdue"></span>
-            <% elsif goal.due_date_soon? %>
-              <span class="glyphicon glyphicon-exclamation-sign due-soon"></span>
-            <% end %>
-          </td>
+          <td><%= goal.due_date.strftime("%B %d %Y") %></td>
+          <td><%= goal.completed %></td>
         </tr>
       <% end %>
-    </tbody>
-  </table>
+    </table>
   <% end %>
 </div>

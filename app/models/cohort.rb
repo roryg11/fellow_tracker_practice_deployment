@@ -55,4 +55,24 @@ class Cohort < ActiveRecord::Base
       "Cohort has graduated"
     end
   end
+
+  def weeks_from_start
+    ((Date.today - start_date)/7).ceil.to_i
+  end
+
+  def week_dates(week_number)
+    week_start_date(week_number).strftime("%B %d %Y") + ' - ' + week_end_date(week_number).strftime("%B %d %Y")
+  end
+
+  def week_range(week_number)
+    week_start_date(week_number)..week_end_date(week_number)
+  end
+
+  def week_start_date(week_number)
+    start_date + (7 * (week_number - 1))
+  end
+
+  def week_end_date(week_number)
+    week_start_date(week_number) + 6
+  end
 end
