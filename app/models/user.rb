@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
         week_number+=1
        end
      cohort_phase_array
-   end
+    end
   end
 
   def cumulative_progress
@@ -59,5 +59,9 @@ class User < ActiveRecord::Base
     else
       0
     end
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end
