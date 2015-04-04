@@ -28,7 +28,7 @@
             <td><%= user.overall_progress %>%</td>
             <td>
               <ul>
-                <% if user.this_weeks_goals.any? %>
+                <% if user.this_weeks_goals %>
                   <% user.this_weeks_goals.each do |goal| %>
                     <li><%= goal.description %>
                       <% if goal.completed %>
