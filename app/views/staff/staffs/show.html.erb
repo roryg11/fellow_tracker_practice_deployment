@@ -2,7 +2,7 @@
   <h1 class="page-header">All Cohorts and Aggregate Progress</h1>
   <% @cohorts.each do |cohort| %>
   <table class="table">
-    <h4><%= cohort.full_name.capitalize %></h4>
+    <h4><%= link_to cohort.full_name.capitalize, staff_cohort_path(cohort) %></h4>
     <p><strong>Start Date:</strong> <%= cohort.start_date %></p>
     <p><strong>Current Phase:</strong> <%= cohort.current_phase %></p>
     <p><strong>Overall Fellow Progress:</strong> <%= cohort.overall_progress %>%</p>

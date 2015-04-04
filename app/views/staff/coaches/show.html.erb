@@ -4,7 +4,7 @@
   <% @coach.cohorts.each do |cohort| %>
     <table class="table">
       <thead>
-        <h3><%= cohort.full_name.capitalize %> Cohort</h3>
+        <h3><%= link_to (cohort.full_name.capitalize), staff_cohort_path(cohort) %> Cohort</h3>
         <ul style="list-style-type: none">
           <li>complete<span class="glyphicon glyphicon-ok done"></span></li>
           <li>overdue<span class="glyphicon glyphicon-exclamation-sign overdue"></span></li>
