@@ -18,30 +18,34 @@
           <th>This Week's Goals</th>
         </tr>
       </thead>
-      <% cohort.users.each do |user| %>
-      <tr>
-        <% if user.role == "Fellow" %>
-          <td><%= link_to user.full_name, staff_fellow_path(user) %></td>
-          <td><%= user.email %></td>
-          <td><%= user.week_progress %>% </td>
-          <td><%= user.overall_progress %>%</td>
-          <td>
-            <ul>
-              <% user.this_weeks_goals.each do |goal| %>
-                <li><%= goal.description %>
-                  <% if goal.completed %>
-                    <span class="glyphicon glyphicon-ok done"></span>
-                  <% elsif goal.overdue? %>
-                    <span class="glyphicon glyphicon-exclamation-sign overdue"></span>
-                  <% elsif goal.due_date_soon? %>
-                    <span class="glyphicon glyphicon-exclamation-sign due-soon"></span>
+      <% if cohort.users %>
+        <% cohort.users.each do |user| %>
+        <tr>
+          <% if user.role == "Fellow" %>
+            <td><%= link_to user.full_name, staff_fellow_path(user) %></td>
+            <td><%= user.email %></td>
+            <td><%= user.week_progress %>% </td>
+            <td><%= user.overall_progress %>%</td>
+            <td>
+              <ul>
+                <% if user.this_weeks_goals.any? %>
+                  <% user.this_weeks_goals.each do |goal| %>
+                    <li><%= goal.description %>
+                      <% if goal.completed %>
+                        <span class="glyphicon glyphicon-ok done"></span>
+                      <% elsif goal.overdue? %>
+                        <span class="glyphicon glyphicon-exclamation-sign overdue"></span>
+                      <% elsif goal.due_date_soon? %>
+                        <span class="glyphicon glyphicon-exclamation-sign due-soon"></span>
+                      <% end %>
+                    </li>
                   <% end %>
-                </li>
-              <% end %>
-            </ul>
-          </td>
+                <% end %>
+              </ul>
+            </td>
+          <% end %>
+        </tr>
         <% end %>
-      </tr>
       <% end %>
     </table>
   <% end %>
