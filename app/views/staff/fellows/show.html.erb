@@ -4,4 +4,5 @@
     <li role="presentation">  <%= link_to "Goals History", staff_fellow_goals_path(@fellow) %></li>
   </ul>
   <%= render partial: '/shared/goals', object: @fellow, as: :user%>
+  <%= link_to "New Goal", new_staff_fellow_goal_path(@fellow), id: "new-goal-action", class: "btn btn-primary" %>
  </div>
