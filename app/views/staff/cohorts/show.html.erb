@@ -17,7 +17,7 @@
     <tbody>
       <% @cohort.fellows.each do |fellow| %>
         <tr>
-          <td><%= fellow.full_name %></td>
+          <td><%= link_to fellow.full_name, staff_fellow_path(fellow) %></td>
           <td><%= fellow.email %></td>
           <td><%= fellow.week_progress %>%</td>
           <td><%= fellow.overall_progress %>%</td>

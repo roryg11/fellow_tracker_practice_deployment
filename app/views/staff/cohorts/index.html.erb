@@ -17,9 +17,6 @@
         <tr>
           <td><%= link_to "#{cohort.season} #{cohort.year}", staff_cohort_path(cohort) %></td>
           <td><%= cohort.start_date %></td>
-          <!-- <td>
-            <%= cohort.users %>
-          </td> -->
           <td><%= link_to "Edit", edit_staff_cohort_path(cohort) %></td>
           <td><%= link_to 'Delete', staff_cohort_path(cohort), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
         </tr>

@@ -21,7 +21,7 @@
       <% cohort.users.each do |user| %>
       <tr>
         <% if user.role == "Fellow" %>
-          <td><%= user.full_name %></td>
+          <td><%= link_to user.full_name, staff_fellow_path(user) %></td>
           <td><%= user.email %></td>
           <td><%= user.week_progress %>% </td>
           <td><%= user.overall_progress %>%</td>
