@@ -38,6 +38,3 @@ class Fellow < User
     end
   end
 end
-
-# fellow has one primary_coach (through mentorship)
-# coach has many mentees (through mentorship)
