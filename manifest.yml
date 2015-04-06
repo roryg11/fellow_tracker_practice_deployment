@@ -1,0 +1,9 @@
+ applications:
+ - name: uncollege-staging
+   memory: 512M
+   instances: 1
+   host: uncollege-staging
+   domain: mybluemix.net
+   path: .
+   services:
+   - uncollege-staging-db
